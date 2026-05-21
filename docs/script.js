@@ -14,7 +14,10 @@ const products = [
       'Malaysian + Southeast Asian themes',
       'Designed for learning through play',
       'Suitable for ages 8+'
-    ]
+    ],
+    active: true,
+    featured: true,
+    priority: 10
   },
   {
     id: 2,
@@ -28,7 +31,10 @@ const products = [
       'does this work',
       '1',
       '2'
-    ]
+    ],
+    active: true,
+    featured: false,
+    priority: 5
   }
 ];
 
@@ -53,15 +59,65 @@ function setImage(selector, src) {
 }
 
 /* =========================
-   MAIN PRODUCT ROUTER
+   RENDER PRODUCT GRID
+========================= */
+function renderProductGrid(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  const activeProducts = products.filter(p => p.active);
+
+  container.innerHTML = activeProducts.map(p => `
+    <div class="product-card">
+      <img src="${p.image}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p>${p.price}</p>
+      <a href="product.html?id=${p.id}" class="btn">View</a>
+    </div>
+  `).join('');
+}
+
+/* =========================
+   RENDER FEATURED PRODUCT
+========================= */
+function renderFeaturedProduct(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  const featured = products
+    .filter(p => p.active && p.featured)
+    .sort((a, b) => b.priority - a.priority)[0];
+
+  if (!featured) {
+    container.innerHTML = '<p>No featured product available.</p>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="product-card">
+      <img src="${featured.image}" alt="${featured.name}">
+      <div class="card-body">
+        <h3>${featured.name}</h3>
+        <p>${featured.description}</p>
+        <p class="price">${featured.price}</p>
+        <a href="product.html?id=${featured.id}" class="btn">View</a>
+      </div>
+    </div>
+  `;
+}
+
+/* =========================
+   LOAD PRODUCT PAGE
 ========================= */
 function loadProductPage() {
   const id = parseInt(getQueryParam('id'), 10);
   if (!id) return;
 
   const product = products.find(p => p.id === id);
+
   if (!product) {
-    document.body.innerHTML = "<h1 style='text-align:center'>Product not found</h1>";
+    document.body.innerHTML =
+      "<h1 style='text-align:center'>Product not found</h1>";
     return;
   }
 
@@ -71,7 +127,7 @@ function loadProductPage() {
   setText('#description', product.description);
   setText('#longDescription', product.description);
 
-  // Images (more stable than querySelector chain fallback)
+  // Images
   document.querySelectorAll('.hero-image, .product-image').forEach(img => {
     img.src = product.image;
     img.alt = product.name;
@@ -79,8 +135,10 @@ function loadProductPage() {
 
   // Feature list
   const featureList = document.querySelector('.product-info ul');
+
   if (featureList) {
     featureList.innerHTML = '';
+
     product.features.forEach(feature => {
       const li = document.createElement('li');
       li.textContent = feature;
@@ -90,43 +148,52 @@ function loadProductPage() {
 }
 
 /* =========================
-   OPTIONAL: AUTO PRODUCT GRID (if used on index page later)
-========================= */
-function renderProductGrid(containerSelector) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
-
-  container.innerHTML = products.map(p => `
-    <div class="product-card">
-      <img src="${p.image}" alt="${p.name}">
-      <h3>${p.name}</h3>
-      <p>${p.price}</p>
-      <a href="product.html?id=${p.id}">View</a>
-    </div>
-  `).join('');
-}
-
-/* =========================
    INIT
 ========================= */
 document.addEventListener('DOMContentLoaded', () => {
-  // Toggle mobile menu
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
+
   if (menuToggle && navLinks) {
+
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('show');
     });
-  // Close menu when a link is clicked (optional)
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('show');
+
+    // Close menu when link clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+      });
     });
-  });
   }
 
-  // Load product page if needed
-  if (window.location.pathname.endsWith('product.html')) {
+  /* =========================
+     PAGE ROUTER
+  ========================= */
+  const path = window.location.pathname;
+
+  // Home page
+  if (
+    path.endsWith('index.html') ||
+    path === '/' ||
+    path.endsWith('/')
+  ) {
+    renderFeaturedProduct('#featured-product');
+    renderProductGrid('#home-grid');
+  }
+
+  // Products page
+  if (path.endsWith('products.html')) {
+    renderProductGrid('#products-grid');
+  }
+
+  // Single product page
+  if (path.endsWith('product.html')) {
     loadProductPage();
   }
 

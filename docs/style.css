@@ -534,3 +534,10 @@ footer {
 
   box-shadow: 0 0 20px rgba(0, 183, 255, 0.15);
 }
+
+.form-note {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 1rem;
+}

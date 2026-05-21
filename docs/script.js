@@ -7,7 +7,7 @@ const products = [
     name: 'Malaysian Heritage Match',
     price: 'SOLD OUT',
     description: 'Educational card game featuring Malaysian culture, history, arts, food, and traditions.',
-    image: 'https://via.placeholder.com/300x200',
+    image: 'https://placehold.co/300x200',
     features: [
       'Educational cultural learning',
       'Fun for families and students',
@@ -21,7 +21,7 @@ const products = [
     name: 'A product for testing i guess',
     price: 'RM Test',
     description: 'i test this',
-    image: 'https://via.placeholder.com/300x200',
+    image: 'https://placehold.co/300x200',
     features: [
       'item',
       'idk',

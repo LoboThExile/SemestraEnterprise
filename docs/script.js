@@ -5,7 +5,7 @@ const products = [
   {
     id: 1,
     name: 'Malaysian Heritage Match',
-    price: 'RM 59.90',
+    price: 'SOLD OUT',
     description: 'Educational card game featuring Malaysian culture, history, arts, food, and traditions.',
     image: 'https://via.placeholder.com/300x200',
     features: [
@@ -18,16 +18,16 @@ const products = [
   },
   {
     id: 2,
-    name: 'Sigma',
-    price: 'RM 59.90',
-    description: 'Educational card game featuring Malaysian culture, history, arts, food, and traditions.',
+    name: 'A product for testing i guess',
+    price: 'RM Test',
+    description: 'i test this',
     image: 'https://via.placeholder.com/300x200',
     features: [
-      'Educational learning system',
-      'Fun gameplay mechanics',
-      'Cultural-inspired design',
-      'Balanced strategy gameplay',
-      'Suitable for ages 8+'
+      'item',
+      'idk',
+      'does this work',
+      '1',
+      '2'
     ]
   }
 ];
@@ -68,7 +68,8 @@ function loadProductPage() {
   // Text fields
   setText('h1', product.name);
   setText('.price', product.price);
-  setText('.description', product.description);
+  setText('#description', product.description);
+  setText('#longDescription', product.description);
 
   // Images (more stable than querySelector chain fallback)
   document.querySelectorAll('.hero-image, .product-image').forEach(img => {
@@ -109,6 +110,22 @@ function renderProductGrid(containerSelector) {
    INIT
 ========================= */
 document.addEventListener('DOMContentLoaded', () => {
+  // Toggle mobile menu
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  // Close menu when a link is clicked (optional)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+    });
+  });
+  }
+
+  // Load product page if needed
   if (window.location.pathname.endsWith('product.html')) {
     loadProductPage();
   }

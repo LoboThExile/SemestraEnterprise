@@ -596,16 +596,16 @@ footer {
 }
 
 .contact-btn-list {
-  width: fit-content;
-  align-self: center;
-  align-content: center;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: row;
 }
 
 .btn-contact {
   display: block;
   width: fit-content;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 
   padding: 0.9rem 2rem;
   border: none;

@@ -21,18 +21,18 @@ const products = [
   },
   {
     id: 2,
-    name: 'kiran ezra binti atari game system ',
-    price: 'RM 399',
-    description: 'orang hitam,gay untuk dijual',
+    name: 'nil',
+    price: 'RM nil',
+    description: '',
     image: 'https://placehold.co/300x200',
     features: [
-      'kote besar',
-      'sedap',
-      'jual kiran',
-      '1',
-      '2'
+      '',
+      '',
+      '',
+      '',
+      ''
     ],
-    active: true,
+    active: false,
     featured: false,
     priority: 5
   }

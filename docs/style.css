@@ -92,6 +92,7 @@ nav .container {
   animation: pulseLogo 3s ease-in-out infinite;
   border-radius: 8px;
   overflow: hidden;
+  object-fit: contain;
 }
 
 nav .nav-links {
@@ -157,12 +158,16 @@ nav .menu-toggle {
 }
 
 .hero-comp-logo {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+  width: 600px;
+  /* max-width: 600px; */
+  height: 300px;
   margin-bottom: 2rem;
   border-radius: 12px;
   overflow: hidden;
+  object-fit: contain;
+
+  opacity: 0;
+  animation: fadeIn 3s ease forwards 0.75s;
 }
 
 
@@ -174,12 +179,18 @@ nav .menu-toggle {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
   color: #a0a0a0;
+
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards 0.25s;
 }
 
 .hero .btn {
@@ -201,10 +212,13 @@ nav .menu-toggle {
   transition:
     transform 0.2s,
     box-shadow 0.2s;
+
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards 0.5s;
 }
 
 .hero .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(0, 183, 255, 0.3);
 }
 
@@ -253,7 +267,8 @@ nav .menu-toggle {
     box-shadow 0.25s ease,
     border-color 0.25s ease;
 
-  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 0.2s;
 }
 
 .product-card:hover {
@@ -578,6 +593,13 @@ footer {
   font-size: 0.9rem;
   color: #888;
   margin-top: 1rem;
+}
+
+.contact-btn-list {
+  width: fit-content;
+  align-self: center;
+  align-content: center;
+  margin: auto;
 }
 
 .btn-contact {

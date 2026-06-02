@@ -5,15 +5,15 @@ const products = [
   {
     id: 1,
     name: 'Malaysian Heritage Match',
-    price: 'SOLD OUT',
+    price: 'NOT RELEASED YET',
     description: 'Educational card game featuring Malaysian culture, history, arts, food, and traditions.',
     image: 'https://placehold.co/300x200',
     features: [
       'Educational cultural learning',
       'Fun for families and students',
-      'Malaysian + Southeast Asian themes',
-      'Designed for learning through play',
-      'Suitable for ages 8+'
+      'Malaysian Southeast Asian themes',
+      'Designed for Interactive Learning',
+      'Suitable for ages 6+'
     ],
     active: true,
     featured: true,
@@ -21,14 +21,14 @@ const products = [
   },
   {
     id: 2,
-    name: 'A product for testing i guess',
-    price: 'RM Test',
-    description: 'i test this',
+    name: 'kiran ezra binti atari game system ',
+    price: 'RM 399',
+    description: 'orang hitam,gay untuk dijual',
     image: 'https://placehold.co/300x200',
     features: [
-      'item',
-      'idk',
-      'does this work',
+      'kote besar',
+      'sedap',
+      'jual kiran',
       '1',
       '2'
     ],

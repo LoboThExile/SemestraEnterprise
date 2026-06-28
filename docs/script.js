@@ -5,7 +5,7 @@ const products = [
   {
     id: 1,
     name: 'Malaysian Heritage Match',
-    price: 'NOT RELEASED YET',
+    price: 'RM 10',
     description: 'Educational card game featuring Malaysian culture, history, arts, food, and traditions.',
     image: 'https://placehold.co/300x200',
     features: [
@@ -21,7 +21,7 @@ const products = [
   },
   {
     id: 2,
-    name: 'nil',
+    name: 'Modular Fan',
     price: 'RM nil',
     description: '',
     image: 'https://placehold.co/300x200',
@@ -71,7 +71,9 @@ function renderProductGrid(containerSelector) {
     <div class="product-card">
       <img src="${p.image}" alt="${p.name}">
       <h3>${p.name}</h3>
-      <p>${p.price}</p>
+      <p>${p.description}</p>
+      <div class="product-divider-card"></div>
+      <p class="price">${p.price}</p>
       <a href="product.html?id=${p.id}" class="btn">View</a>
     </div>
   `).join('');
@@ -99,7 +101,7 @@ function renderFeaturedProduct(containerSelector) {
       <div class="card-body">
         <h3>${featured.name}</h3>
         <p>${featured.description}</p>
-        <p class="price">${featured.price}</p>
+        <!-- <p class="price">${featured.price}</p> --!>
         <a href="product.html?id=${featured.id}" class="btn">View</a>
       </div>
     </div>
@@ -141,7 +143,7 @@ function loadProductPage() {
 
     product.features.forEach(feature => {
       const li = document.createElement('li');
-      li.textContent = feature;
+      li.textContent = "✓ " + feature;
       featureList.appendChild(li);
     });
   }

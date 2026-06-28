@@ -158,9 +158,9 @@ nav .menu-toggle {
 }
 
 .hero-comp-logo {
-  width: 600px;
-  /* max-width: 600px; */
-  height: 300px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
   margin-bottom: 2rem;
   border-radius: 12px;
   overflow: hidden;
@@ -243,6 +243,7 @@ nav .menu-toggle {
   border-radius: 18px;
   overflow: hidden;
 
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
 
@@ -298,12 +299,32 @@ nav .menu-toggle {
 }
 
 .product-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  margin: 0.5rem 1rem 0rem 1rem;
 
   padding: 0.2rem 0.4rem;
 
   color: white;
+}
+
+.product-divider-card {
+  width: 100%;
+  height: 1px;
+  margin: 5px 0;
+  margin-left: 0.5rem;
+
+  border: none;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(0, 183, 255, 0.2),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+
+  box-shadow: 0 0 20px rgba(0, 183, 255, 0.15);
 }
 
 .product-card p {
@@ -312,6 +333,7 @@ nav .menu-toggle {
   padding: 0.2rem 0.4rem;
 
   font-size: 0.95rem;
+  margin-left: 0.5rem;
   margin-bottom: 1rem;
 
   color: #a0a0a0;
@@ -321,7 +343,8 @@ nav .menu-toggle {
   font-size: 1.2rem;
   font-weight: bold;
 
-  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0;
 
   color: #00b7ff;
 }
@@ -404,6 +427,7 @@ section h2 {
   text-align: center;
 
   font-size: 2rem;
+  margin-top: 3rem;
   margin-bottom: 1.5rem;
 
   color: white;
@@ -630,3 +654,6 @@ footer {
 }
 
 
+.skip-link {
+  align-self: center;
+}

@@ -3,53 +3,253 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Details</title>
+    <title>Product Details | Semestra Enterprise</title>
+    <meta name="description" content="View specifications, craft highlights, and direct ordering options for Semestra Enterprise creations." />
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      (function() {
+        const saved = localStorage.getItem('semestra_theme_preference') || 'system';
+        const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const resolved = saved === 'system' ? (isDark ? 'dark' : 'light') : saved;
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.setAttribute('data-theme-setting', saved);
+      })();
+    </script>
   </head>
-  <body>
+  <body id="product-details-page">
+    <!-- Header Navigation -->
     <nav>
       <div class="container">
-        <a href="index.html">
-          <img src="assets/image/logo.jpeg" alt="Semestra Enterprise Logo" href class="logo">
+        <a href="index.html" class="brand-link">
+          <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" />
+          <div class="brand-title">
+            <span class="main-name">SEMESTRA</span>
+            <span class="tagline-small">ENTERPRISE</span>
+          </div>
         </a>
-        <span class="menu-toggle">&#9776;</span>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="products.html">Products</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-    </nav>
-    <section class="hero">
-      <div class="container">
-        <h1 id="title">Loading...</h1>
-        <p id="description"></p>
-        <img id="heroImage" src="" alt="Product image" class="hero-image" />
-        <p class="price" id="price"></p>
-        <a href="contact.html" class="btn">Contact to Order</a>
-      </div>
-    </section>
-    <div class="divider"></div>
-    <section>
-      <div class="container">
-        <h2>Product Details</h2>
-        <div class="product-detail">
-          <img id="detailImage" src="" alt="" class="product-image" />
-          <div class="product-info">
-            <h3 id="name"></h3>
-            <p id="longDescription"></p>
-            <h4>Features</h4>
-            <ul id="features"></ul>
+
+        <div class="nav-right-group">
+          <!-- Theme Switcher (3 Modes: System, Light, Dark) -->
+          <div class="theme-switch-wrap">
+            <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode">
+              <span id="theme-active-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </span>
+              <span id="theme-active-label">Auto</span>
+            </button>
+            <div class="theme-menu-dropdown" id="theme-menu-dropdown">
+              <button type="button" class="theme-menu-item" data-theme-value="system">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>System</span>
+              </button>
+              <button type="button" class="theme-menu-item" data-theme-value="light">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <span>Light</span>
+              </button>
+              <button type="button" class="theme-menu-item" data-theme-value="dark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <span>Dark</span>
+              </button>
+            </div>
+          </div>
+
+          <button class="menu-toggle" aria-label="Toggle navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html" class="active">All Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener" class="nav-cta">Official JAMall</a>
           </div>
         </div>
       </div>
-    </section>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 0.85rem 0;">
+      <div class="container" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; color: var(--text-muted);">
+        <a href="index.html" style="color: var(--text-muted);">Home</a>
+        <span>/</span>
+        <a href="products.html" style="color: var(--text-muted);">Creations</a>
+        <span>/</span>
+        <span style="color: var(--text-primary); font-weight: 700;" id="breadcrumb-title">Product Details</span>
+      </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <main class="container">
+      <div class="product-detail-layout">
+        <!-- Visual Column -->
+        <div class="product-showcase-box">
+          <div class="showcase-img-box">
+            <img id="product-photo-large" src="assets/image/malaysian-heritage-match.png" alt="Product Photo" />
+          </div>
+
+          <!-- Key Specs Grid -->
+          <div class="detail-specs-grid" id="detail-specs-container">
+            <!-- Dynamically populated via script.js -->
+          </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="product-info-column">
+          <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-heading-gold); display: block; margin-bottom: 0.4rem;" id="product-tagline">
+            Product Category
+          </span>
+
+          <h1 id="product-title" style="margin-bottom: 0.5rem;">Product Name</h1>
+
+          <div class="price-large" id="product-price">RM 0.00</div>
+
+          <p class="description-text" id="product-long-desc">
+            Product description loading...
+          </p>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+            <button type="button" id="btn-open-order-modal" class="btn btn-primary btn-lg">
+              <span>Order Now</span>
+            </button>
+            <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+              <span>Buy on JAMall</span>
+            </a>
+          </div>
+
+          <h3 class="section-subhead">Features & Highlights</h3>
+          <ul class="feature-checklist" id="product-features-list">
+            <!-- Dynamically populated via script.js -->
+          </ul>
+
+          <h3 class="section-subhead">Package Contents</h3>
+          <ul class="feature-checklist" id="product-box-list">
+            <!-- Dynamically populated via script.js -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card Deck Showcase (Flagship Game) -->
+      <section id="deck-showcase-area" class="deck-showcase-section" style="display: none;">
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+          <span class="section-eyebrow">Card Deck Overview</span>
+          <h2>Inside the Malaysian Heritage Match Deck</h2>
+          <p>Explore the official state cards including traditional attire, state flags, and regional heritage.</p>
+        </div>
+        <div class="deck-showcase-card">
+          <img src="assets/image/Banner.jpeg" alt="Malaysian Heritage Match Flagship Creations & Card Deck" class="deck-showcase-img" />
+          <div class="deck-showcase-caption">
+            <div>🏛️ <strong>States Included:</strong> Johor, Kedah, Penang & more</div>
+            <div>👘 <strong>Cultural Elements:</strong> Royal Attire & Traditional Costumes</div>
+            <div>🍜 <strong>Local Delicacies:</strong> Authentic Regional Food Heritage</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Order Modal -->
+    <div id="order-modal" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <button class="modal-close-btn" onclick="closeOrderModal()" aria-label="Close modal">✕</button>
+        <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-heading-gold); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Direct Order Inquiry</span>
+        <h3 id="modal-product-name" style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.25rem;">Product Name</h3>
+        <p id="modal-product-price" style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary); margin-bottom: 1.5rem;">RM 0.00</p>
+
+        <div class="form-group">
+          <label for="order-customer-name">Your Name / School / Organization</label>
+          <input type="text" id="order-customer-name" class="form-control" placeholder="e.g. Cikgu Faridah / SMK Cyberjaya" />
+        </div>
+
+        <div class="form-group">
+          <label for="order-qty">Quantity</label>
+          <input type="number" id="order-qty" class="form-control" min="1" max="100" value="1" />
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          Connect with our student enterprise team directly:
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <button type="button" class="btn btn-primary" onclick="sendWhatsAppOrder()" style="background: #16A34A; border-color: #16A34A;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span>WhatsApp</span>
+          </button>
+          <button type="button" class="btn btn-outline" onclick="sendEmailOrder()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>Email</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" />
+            <p>
+              Semestra Enterprise is a student-led educational enterprise under the JA Malaysia Young Enterprise Program 2026, celebrating Malaysian heritage and handcrafted creations.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="products.html">All Products</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener">JAMall Storefront</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Get in Touch</h4>
+            <ul>
+              <li><a href="tel:01128282939">Phone: 011-2828 2939</a></li>
+              <li><a href="mailto:semestraenterprise@gmail.com">semestraenterprise@gmail.com</a></li>
+              <li><a href="https://www.instagram.com/semestraenterprise" target="_blank" rel="noopener">Instagram: @semestraenterprise</a></li>
+              <li><a href="contact.html">School & Bulk Orders</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
+          <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+            <button type="button" class="cookie-settings-link">Cookie Notice</button>
+            <p style="color: #FBBF24; font-weight: 600; margin: 0;">JA Malaysia • Young Enterprise Program 2026</p>
+          </div>
+        </div>
       </div>
     </footer>
+
+    <!-- Cookie & Local Storage Notice Banner -->
+    <aside id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie and storage notice">
+      <div class="cookie-banner-content">
+        <div class="cookie-banner-title">
+          <span>🍪</span>
+          <span>Cookie & Storage Notice</span>
+        </div>
+        <p>
+          We use browser local storage to remember your theme preference (Light/Dark mode) across pages. No personal data is tracked or sold. You can opt out anytime.
+        </p>
+        <div class="cookie-banner-actions">
+          <button type="button" id="cookie-accept-btn" class="btn btn-primary btn-sm">Accept</button>
+          <button type="button" id="cookie-decline-btn" class="btn btn-outline btn-sm">Opt Out</button>
+        </div>
+      </div>
+    </aside>
+
     <script src="script.js"></script>
   </body>
 </html>

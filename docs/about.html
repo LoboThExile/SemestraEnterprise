@@ -1,61 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Semestra Enterprise</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Semestra Enterprise | Malaysian Heritage & Youth Entrepreneurship</title>
+    <meta name="description" content="Learn about Semestra Enterprise, a student-led company under the JA Malaysia Young Enterprise Program 2026 dedicated to celebrating Malaysian culture and youth entrepreneurship." />
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function() {
+        const saved = localStorage.getItem('semestra_theme_preference') || 'system';
+        const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const resolved = saved === 'system' ? (isDark ? 'dark' : 'light') : saved;
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.setAttribute('data-theme-setting', saved);
+      })();
+    </script>
   </head>
   <body>
+    <!-- Header Navigation -->
     <nav>
       <div class="container">
-        <a href="index.html">
-          <img src="assets/image/logo.jpeg" alt="Semestra Enterprise Logo" href class="logo">
+        <a href="index.html" class="brand-link">
+          <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" />
+          <div class="brand-title">
+            <span class="main-name">SEMESTRA</span>
+            <span class="tagline-small">ENTERPRISE</span>
+          </div>
         </a>
-        <span class="menu-toggle">&#9776;</span>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="products.html">Products</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
+
+        <div class="nav-right-group">
+          <!-- Theme Switcher (3 Modes: System, Light, Dark) -->
+          <div class="theme-switch-wrap">
+            <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode">
+              <span id="theme-active-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </span>
+              <span id="theme-active-label">Auto</span>
+            </button>
+            <div class="theme-menu-dropdown" id="theme-menu-dropdown">
+              <button type="button" class="theme-menu-item" data-theme-value="system">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>System</span>
+              </button>
+              <button type="button" class="theme-menu-item" data-theme-value="light">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <span>Light</span>
+              </button>
+              <button type="button" class="theme-menu-item" data-theme-value="dark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <span>Dark</span>
+              </button>
+            </div>
+          </div>
+
+          <button class="menu-toggle" aria-label="Toggle navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">All Products</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener" class="nav-cta">Official JAMall</a>
+          </div>
         </div>
       </div>
     </nav>
-    <section class="hero">
-      <div class="container">
-        <h1>About Semestra Enterprise</h1>
-        <p>Preserving and promoting Malaysian culture through educational products</p>
+
+    <!-- About Hero -->
+    <header class="hero" style="padding: 3.5rem 0 2.5rem; text-align: center;">
+      <div class="container" style="max-width: 780px;">
+        <div class="hero-badge-pill" style="margin: 0 auto 1.25rem;">
+          <span class="pill-dot"></span>
+          <span>JA Malaysia • Young Enterprise Company</span>
+        </div>
+        <h1 style="color: var(--text-primary); margin-bottom: 0.85rem;">About Semestra Enterprise</h1>
+        <p class="lead" style="margin-bottom: 0;">
+          Celebrating Malaysian cultural roots and youth entrepreneurship through engaging tabletop games and handcrafted gifts.
+        </p>
       </div>
-    </section>
-    <div class="divider"></div>
-    <section>
-      <div class="container">
-        <h2>Our Mission</h2>
-        <p>Semestra Enterprise is a small indie business dedicated to making learning Malaysian culture fun and accessible. We create educational products that help people, especially younger audiences, appreciate and understand the rich heritage of Malaysia and Southeast Asia.</p>
-        <h2>Our Products</h2>
-        <p>Our flagship product, Malaysian Heritage Match, is a card-based educational game that unite Malaysia Culture to life. It's designed to be both entertaining and informative, perfect for students, families, and casual players.</p>
-        <h2>Our Values</h2>
-        <ul>
-          <li>
-            <strong>Cultural Appreciation:</strong> We believe in the importance of understanding and appreciating diverse cultures.
-          </li>
-          <li>
-            <strong>Educational Excellence:</strong> Our products are designed to be both fun and educational.
-          </li>
-          <li>
-            <strong>Accessibility:</strong> We aim to make cultural learning accessible to everyone.
-          </li>
-          <li>
-            <strong>Quality:</strong> We are committed and enlighted to creating high-quality, engaging products.
-          </li>
-        </ul>
+    </header>
+
+    <!-- Main Story Narrative -->
+    <main class="container">
+      <div class="story-card">
+        <h2>Our Story & Mission</h2>
+        <p>
+          <strong>Semestra Enterprise</strong> is a youth-led student company operating under the prestigious <strong>Junior Achievement Malaysia (JA Malaysia) Young Enterprise Program 2026</strong>. Our team came together with a unified goal: to create engaging products that celebrate Malaysian heritage and showcase student innovation.
+        </p>
+        <p>
+          Our flagship creation, <strong>Malaysian Heritage Match (RM 55)</strong>, is an educational tabletop card game designed to make learning about Malaysian culture, history, state traditions, royal costumes, foods, and landmarks exciting and interactive for families and classrooms.
+        </p>
+        <p>
+          Alongside our flagship game, our student entrepreneurs handcraft everlasting <strong>PipeCleaner Flower Pots (RM 15)</strong>, floral <strong>Handmade Hairclips (RM 4)</strong>, and retro <strong>Pixel-Art Keychains (RM 4)</strong>. All products are available on our official JA Malaysia Mall storefront.
+        </p>
+
+        <!-- Official YE Creation Showcase Banner -->
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); text-align: center;">
+          <img src="assets/image/Banner.jpeg" alt="Semestra Enterprise Flagship Creations - JA Malaysia Young Enterprise Program" style="width: 100%; max-width: 860px; height: auto; margin: 0 auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);" />
+          <p style="font-size: 0.86rem; color: var(--text-muted); margin-top: 0.75rem;">
+            Official JA Malaysia Young Enterprise Program 2026 flagship card game & creations showcase.
+          </p>
+        </div>
       </div>
-    </section>
+
+      <!-- Core Values Grid -->
+      <div class="section-header">
+        <span class="section-eyebrow">Guiding Values</span>
+        <h2>What Drives Semestra Enterprise</h2>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <h3>Cultural Pride</h3>
+          <p>Inspiring genuine curiosity and appreciation for Malaysia's multi-ethnic traditions, royal attire, and regional heritage.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"></path>
+            </svg>
+          </div>
+          <h3>Hands-On Learning</h3>
+          <p>Designing games that seamlessly integrate classroom-friendly Malaysian cultural education into family game nights.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3>Youth Leadership</h3>
+          <p>Practicing real-world enterprise operations, craftsmanship, financial literacy, and teamwork through JA Malaysia.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>Community Connection</h3>
+          <p>Creating wholesome, screen-free opportunities for friends, families, and students to connect and learn together.</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" />
+            <p>
+              Semestra Enterprise is a student-led educational enterprise under the JA Malaysia Young Enterprise Program 2026, celebrating Malaysian heritage and handcrafted creations.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="products.html">All Products</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener">JAMall Storefront</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Get in Touch</h4>
+            <ul>
+              <li><a href="tel:01128282939">Phone: 011-2828 2939</a></li>
+              <li><a href="mailto:semestraenterprise@gmail.com">semestraenterprise@gmail.com</a></li>
+              <li><a href="https://www.instagram.com/semestraenterprise" target="_blank" rel="noopener">Instagram: @semestraenterprise</a></li>
+              <li><a href="contact.html">School & Bulk Orders</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
+          <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+            <button type="button" class="cookie-settings-link">Cookie Notice</button>
+            <p style="color: #FBBF24; font-weight: 600; margin: 0;">JA Malaysia • Young Enterprise Program 2026</p>
+          </div>
+        </div>
       </div>
     </footer>
+
+    <!-- Cookie & Local Storage Notice Banner -->
+    <aside id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie and storage notice">
+      <div class="cookie-banner-content">
+        <div class="cookie-banner-title">
+          <span>🍪</span>
+          <span>Cookie & Storage Notice</span>
+        </div>
+        <p>
+          We use browser local storage to remember your theme preference (Light/Dark mode) across pages. No personal data is tracked or sold. You can opt out anytime.
+        </p>
+        <div class="cookie-banner-actions">
+          <button type="button" id="cookie-accept-btn" class="btn btn-primary btn-sm">Accept</button>
+          <button type="button" id="cookie-decline-btn" class="btn btn-outline btn-sm">Opt Out</button>
+        </div>
+      </div>
+    </aside>
+
     <script src="script.js"></script>
   </body>
 </html>

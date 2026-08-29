@@ -1,7 +1,8 @@
 # Semestra Enterprise
 
-Official website repository for Semestra Enterprise under the JA Malaysia Young Enterprise Program 2026.
+Official website repository for Semestra Enterprise (SMK Pantai Sepang Putra) under the JA Malaysia Young Enterprise Program 2026.
 
+- **School:** SMK Pantai Sepang Putra
 - **Website:** https://lobothexile.github.io/SemestraEnterprise/
 - **JA Mall Store:** https://jamalaysia.org.my/JAMall/semestraenterprise/
 - **Instagram:** @semestraenterprise

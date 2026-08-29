@@ -209,7 +209,7 @@ const products = [
     id: 2,
     name: 'PipeCleaner Flowers',
     subtitle: 'Handcrafted Everlasting Floral Pot Decor',
-    category: 'crafts',
+    category: ['crafts'],
     categoryName: 'Floral Crafts',
     price: 'RM 15',
     oldPrice: null,
@@ -240,8 +240,8 @@ const products = [
     id: 3,
     name: 'Handmade Hairclips',
     subtitle: 'Floral Chenille Hair Accessory',
-    category: 'accessories',
-    categoryName: 'Hair Accessories',
+    category: ['accessories', 'crafts'],
+    categoryName: 'Hair Accessories & Crafts',
     price: 'RM 4',
     oldPrice: 'RM 8',
     priceNumber: 4,
@@ -271,7 +271,7 @@ const products = [
     id: 4,
     name: 'Pixel-Art Heritage Keychains',
     subtitle: 'Handcrafted Fuse-Bead Keychains',
-    category: 'accessories',
+    category: ['accessories', 'crafts'],
     categoryName: 'Keychains & Crafts',
     price: 'RM 4',
     oldPrice: 'RM 8',
@@ -371,7 +371,8 @@ function renderCatalogGrid() {
 
   const filtered = products.filter(p => {
     if (!p.active) return false;
-    const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
+    const matchesCategory = currentCategory === 'all' || 
+      (Array.isArray(p.category) ? p.category.includes(currentCategory) : p.category === currentCategory);
     const matchesSearch = currentSearchTerm === '' || 
       p.name.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
       p.shortDescription.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||

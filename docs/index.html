@@ -1,460 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Semestra Enterprise | JA Malaysia Young Enterprise 2026</title>
-    <meta name="description" content="Semestra Enterprise is a student company under JA Malaysia Young Enterprise Program 2026. Explore our flagship Malaysian Heritage Match card game, handmade floral crafts, and pixel-art keychains." />
-    <meta property="og:site_name" content="Semestra Enterprise" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lobothexile.github.io/SemestraEnterprise/index.html" />
-    <meta property="og:title" content="Semestra Enterprise | JA Malaysia Young Enterprise 2026" />
-    <meta property="og:description" content="Youth-led creations celebrating Malaysian culture. Discover our flagship Malaysian Heritage Match card game (RM 55), handmade floral decor, and pixel-art keychains." />
-    <meta property="og:image" content="https://lobothexile.github.io/SemestraEnterprise/assets/image/Banner.jpeg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Semestra Enterprise | JA Malaysia Young Enterprise 2026" />
-    <meta name="twitter:description" content="Discover Malaysian heritage tabletop games and student-handcrafted gifts." />
-    <meta name="twitter:image" content="https://lobothexile.github.io/SemestraEnterprise/assets/image/Banner.jpeg" />
-    <meta name="theme-color" content="#FAF6EE" />
-    <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
-    <link rel="apple-touch-icon" href="assets/icons/favicon.png" />
-    <link rel="stylesheet" href="style.css" />
-    <script>
-      (function() {
-        const saved = localStorage.getItem('semestra_theme_preference') || 'system';
-        const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const resolved = saved === 'system' ? (isDark ? 'dark' : 'light') : saved;
-        document.documentElement.setAttribute('data-theme', resolved);
-        document.documentElement.setAttribute('data-theme-setting', saved);
-      })();
-    </script>
-  </head>
-  <body>
-    <!-- Header Navigation -->
-    <nav>
-      <div class="container">
-        <a href="index.html" class="brand-link">
-          <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" />
-          <div class="brand-title">
-            <span class="main-name">SEMESTRA</span>
-            <span class="tagline-small">ENTERPRISE</span>
-          </div>
-        </a>
 
-        <div class="nav-right-group">
-          <!-- Theme Switcher (3 Modes: System, Light, Dark) -->
-          <div class="theme-switch-wrap">
-            <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode">
-              <span id="theme-active-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-              </span>
-              <span id="theme-active-label">Auto</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semestra Enterprise | JA Malaysia Young Enterprise 2026</title>
+  <meta name="description"
+    content="Semestra Enterprise is a student company under JA Malaysia Young Enterprise Program 2026. Explore our flagship product, Malaysian Heritage Match, and other products!" />
+  <meta property="og:site_name" content="Semestra Enterprise" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lobothexile.github.io/SemestraEnterprise/index.html" />
+  <meta property="og:title" content="Semestra Enterprise | JA Malaysia Young Enterprise 2026" />
+  <meta property="og:description"
+    content="Creations celebrating Malaysia's rich culture. Discover our flagship Malaysian Heritage Match and other products." />
+  <meta property="og:image" content="https://lobothexile.github.io/SemestraEnterprise/assets/image/Banner.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Semestra Enterprise | JA Malaysia Young Enterprise 2026" />
+  <meta name="twitter:description"
+    content="Discover Malaysian heritage and crafts. Explore our flagship product, Malaysian Heritage Match, and more!" />
+  <meta name="twitter:image" content="https://lobothexile.github.io/SemestraEnterprise/assets/image/Banner.jpeg" />
+  <meta name="theme-color" content="#FAF6EE" />
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/icons/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      const saved = localStorage.getItem('semestra_theme_preference') || 'system';
+      const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const resolved = saved === 'system' ? (isDark ? 'dark' : 'light') : saved;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.setAttribute('data-theme-setting', saved);
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- Header Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand-link">
+        <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" />
+        <div class="brand-title">
+          <span class="main-name">SEMESTRA</span>
+          <span class="tagline-small">ENTERPRISE</span>
+        </div>
+      </a>
+
+      <div class="nav-right-group">
+        <!-- Theme Switcher (3 Modes: System, Light, Dark) -->
+        <div class="theme-switch-wrap">
+          <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode">
+            <span id="theme-active-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </span>
+            <span id="theme-active-label">Auto</span>
+          </button>
+          <div class="theme-menu-dropdown" id="theme-menu-dropdown">
+            <button type="button" class="theme-menu-item" data-theme-value="system">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>System</span>
             </button>
-            <div class="theme-menu-dropdown" id="theme-menu-dropdown">
-              <button type="button" class="theme-menu-item" data-theme-value="system">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                <span>System</span>
-              </button>
-              <button type="button" class="theme-menu-item" data-theme-value="light">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <span>Light</span>
-              </button>
-              <button type="button" class="theme-menu-item" data-theme-value="dark">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                <span>Dark</span>
-              </button>
-            </div>
-          </div>
-
-          <button class="menu-toggle" aria-label="Toggle navigation menu">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-
-          <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="products.html">All Products</a>
-            <a href="about.html">About Us</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener" class="nav-cta">Official JAMall</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <!-- Hero Text -->
-          <div class="hero-text">
-            <div class="hero-badge-pill">
-              <span class="pill-dot"></span>
-              <span>JA Malaysia • Young Enterprise 2026</span>
-            </div>
-
-            <h1>Preserving Malaysian <span class="highlight">Heritage</span> Through Play & Craft</h1>
-
-            <p class="lead">
-              Youth-led creations celebrating Malaysia’s rich culture. From our flagship tabletop game <strong>Malaysian Heritage Match (RM 55)</strong> to student-handcrafted floral decor and pixel-art accessories.
-            </p>
-
-            <div class="hero-actions">
-              <a href="products.html" class="btn btn-primary btn-lg">
-                <span>Explore Creations</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-              <a href="about.html" class="btn btn-outline btn-lg">Our Story & Mission</a>
-            </div>
-
-            <!-- Trust Bar -->
-            <div class="trust-bar">
-              <div class="trust-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <span>JA Malaysia Certified</span>
-              </div>
-              <div class="trust-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <span>Authentic State Research</span>
-              </div>
-              <div class="trust-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <span>100% Student-Crafted</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hero Visual Showcase -->
-          <div class="hero-visual-card">
-            <img src="assets/image/malaysian-heritage-match.png" alt="Malaysian Heritage Match by Semestra Enterprise" class="main-preview-img" />
-            <div class="hero-visual-footer">
-              <div class="item-info">
-                <h4>Malaysian Heritage Match</h4>
-                <p>Flagship Tabletop Game • 2-6 Players</p>
-              </div>
-              <div class="price-tag">RM 55</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Official Flagship Showcase Section -->
-    <section class="section-padding">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">Flagship Tabletop Creation</span>
-          <h2>Malaysian Heritage Match</h2>
-          <p>Carefully researched and crafted by the Semestra Enterprise student team to celebrate Malaysian state diversity.</p>
-        </div>
-
-        <div id="featured-product-container">
-          <!-- Rendered cleanly via script.js -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Full Official Products Grid Section -->
-    <section class="section-padding" style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">Official Collection</span>
-          <h2>Handcrafted Products & Games</h2>
-          <p>Every purchase directly supports student entrepreneurs under the JA Malaysia Young Enterprise Program.</p>
-        </div>
-
-        <div class="product-grid" style="margin-bottom: 2rem;">
-          <!-- Product 1: Malaysian Heritage Match -->
-          <article class="product-card">
-            <div class="product-card-header">
-              <img src="assets/image/malaysian-heritage-match.png" alt="Malaysian Heritage Match" />
-            </div>
-            <div class="product-card-body">
-              <h3>Malaysian Heritage Match</h3>
-              <p>Educational card game designed to teach players about Malaysian culture, traditions, food, and state heritage.</p>
-              <div class="product-card-meta">
-                <div class="price-wrap">
-                  <div class="price-main-row">
-                    <span class="price">RM 55</span>
-                  </div>
-                </div>
-                <div class="product-card-actions">
-                  <a href="product.html?id=1" class="btn btn-outline btn-sm">Details</a>
-                  <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(1)">Order</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 2: PipeCleaner Flowers -->
-          <article class="product-card">
-            <div class="product-card-header">
-              <img src="assets/image/pipecleaner-flowers.png" alt="PipeCleaner Flowers" />
-            </div>
-            <div class="product-card-body">
-              <h3>PipeCleaner Flowers</h3>
-              <p>Everlasting handmade sunflower arrangement in a ceramic pot. Vibrant blooming chenille petals hand-crafted with care.</p>
-              <div class="product-card-meta">
-                <div class="price-wrap">
-                  <div class="price-main-row">
-                    <span class="price">RM 15</span>
-                  </div>
-                </div>
-                <div class="product-card-actions">
-                  <a href="product.html?id=2" class="btn btn-outline btn-sm">Details</a>
-                  <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(2)">Order</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 3: Handmade Hairclips -->
-          <article class="product-card">
-            <div class="product-card-header">
-              <img src="assets/image/handmade-hairclips.png" alt="Handmade Hairclips" />
-            </div>
-            <div class="product-card-body">
-              <h3>Handmade Hairclips</h3>
-              <p>Delightful handcrafted yellow and white floral pipe-cleaner hairclip with sturdy grip. Adds a cute aesthetic pop.</p>
-              <div class="product-card-meta">
-                <div class="price-wrap">
-                  <span class="price">RM 4</span>
-                  <span class="old-price">RM 8</span>
-                </div>
-                <div class="product-card-actions">
-                  <a href="product.html?id=3" class="btn btn-outline btn-sm">Details</a>
-                  <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(3)">Order</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Product 4: Pixel-Art Heritage Keychains -->
-          <article class="product-card">
-            <div class="product-card-header">
-              <img src="assets/image/pixel-art-keychains.png" alt="Pixel-Art Heritage Keychains" />
-            </div>
-            <div class="product-card-body">
-              <h3>Pixel-Art Heritage Keychains</h3>
-              <p>Handmade fuse-bead pixel-art keychains featuring cute characters (Zootopia Judy & Nick, Tulip, Apple). Durable and lightweight.</p>
-              <div class="product-card-meta">
-                <div class="price-wrap">
-                  <span class="price">RM 4</span>
-                  <span class="old-price">RM 8</span>
-                </div>
-                <div class="product-card-actions">
-                  <a href="product.html?id=4" class="btn btn-outline btn-sm">Details</a>
-                  <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(4)">Order</button>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div style="text-align: center; margin-top: 1.5rem;">
-          <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
-            <span>View Official Storefront on JA Malaysia Mall</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Semestra Section -->
-    <section class="section-padding">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">Our Mission</span>
-          <h2>Why Choose Semestra Enterprise</h2>
-          <p>Created with dedication by student entrepreneurs under the guidance of JA Malaysia.</p>
-        </div>
-
-        <div class="values-grid">
-          <div class="value-card">
-            <div class="value-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            <button type="button" class="theme-menu-item" data-theme-value="light">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
               </svg>
-            </div>
-            <h3>Cultural Preservation</h3>
-            <p>Making cultural learning engaging, tactile, and relatable for youth, students, and families across Malaysia.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              <span>Light</span>
+            </button>
+            <button type="button" class="theme-menu-item" data-theme-value="dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
-            </div>
-            <h3>Young Enterprise Excellence</h3>
-            <p>Developed with thorough research and authentic cultural insights under Junior Achievement Malaysia.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <h3>Screen-Free Connection</h3>
-            <p>Sparking memorable conversations, classroom laughter, and cultural pride around the tabletop.</p>
+              <span>Dark</span>
+            </button>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Call to Action Banner -->
-    <section class="container">
-      <div class="cta-banner">
-        <h2>Order Directly from Semestra Enterprise</h2>
-        <p>Support student entrepreneurship today. Contact our team directly on WhatsApp (011-2828 2939) or place your order online.</p>
-        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-          <button type="button" class="btn btn-primary btn-lg" onclick="openOrderModal(1)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            <span>Order via WhatsApp (011-2828 2939)</span>
-          </button>
-          <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
-            <span>JA Malaysia Mall Store</span>
-          </a>
-        </div>
-      </div>
-    </section>
+        <button class="menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
 
-    <!-- Order Modal -->
-    <div id="order-modal" class="modal-overlay" role="dialog" aria-modal="true">
-      <div class="modal-content">
-        <button class="modal-close-btn" onclick="closeOrderModal()" aria-label="Close modal">✕</button>
-        <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-heading-gold); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Direct Order Inquiry</span>
-        <h3 id="modal-product-name" style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.25rem;">Malaysian Heritage Match</h3>
-        <p id="modal-product-price" style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary); margin-bottom: 1.5rem;">RM 55</p>
-
-        <div class="form-group">
-          <label for="order-customer-name">Your Name / School / Organization</label>
-          <input type="text" id="order-customer-name" class="form-control" placeholder="e.g. Cikgu Aisyah / SMK Sri Bintang" />
-        </div>
-
-        <div class="form-group">
-          <label for="order-qty">Quantity</label>
-          <input type="number" id="order-qty" class="form-control" min="1" max="100" value="1" />
-        </div>
-
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-          Connect with our student enterprise team directly:
-        </p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <button type="button" class="btn btn-primary" onclick="sendWhatsAppOrder()" style="background: #16A34A; border-color: #16A34A;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            <span>WhatsApp</span>
-          </button>
-          <button type="button" class="btn btn-outline" onclick="sendEmailOrder()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            <span>Email</span>
-          </button>
+        <div class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="products.html">All Products</a>
+          <a href="about.html">About Us</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener"
+            class="nav-cta">Official JAMall</a>
         </div>
       </div>
     </div>
+  </nav>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" />
-            <p>
-              Semestra Enterprise is a student-led company from <strong>SMK Pantai Sepang Putra</strong> under the JA Malaysia Young Enterprise Program 2026, celebrating Malaysian heritage and handcrafted creations.
-            </p>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Hero Text -->
+        <div class="hero-text">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>JA Malaysia • Young Enterprise 2026</span>
           </div>
-          <div class="footer-col">
-            <h4>Navigation</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="products.html">All Products</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="privacy.html">Privacy Policy</a></li>
-              <li><a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener">JAMall Storefront</a></li>
-            </ul>
+
+          <h1>Preserving Malaysian <span class="highlight">Heritage</span> Through Play & Craft</h1>
+
+          <p class="lead">
+            Youth-led creations celebrating Malaysia’s rich culture. From our flagship tabletop game <strong>Malaysian
+              Heritage Match (RM 55)</strong> to student-handcrafted floral decor and pixel-art accessories.
+          </p>
+
+          <div class="hero-actions">
+            <a href="products.html" class="btn btn-primary btn-lg">
+              <span>Explore Creations</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="about.html" class="btn btn-outline btn-lg">Our Story & Mission</a>
           </div>
-          <div class="footer-col">
-            <h4>Get in Touch</h4>
-            <ul>
-              <li><a href="tel:01128282939">Phone: 011-2828 2939</a></li>
-              <li><a href="mailto:semestraenterprise@gmail.com">semestraenterprise@gmail.com</a></li>
-              <li><a href="https://www.instagram.com/semestraenterprise" target="_blank" rel="noopener">Instagram: @semestraenterprise</a></li>
-              <li><a href="contact.html">School & Bulk Inquiries</a></li>
-            </ul>
+
+          <!-- Trust Bar -->
+          <div class="trust-bar">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>JA Malaysia Certified</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Authentic State Research</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>100% Student-Crafted</span>
+            </div>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
-          <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
-            <a href="privacy.html" style="color: #94A3B8; font-size: 0.82rem; text-decoration: underline;">Privacy Policy</a>
-            <button type="button" class="cookie-settings-link">Cookie Notice</button>
-            <p style="color: #FBBF24; font-weight: 600; margin: 0;">JA Malaysia • Young Enterprise Program 2026</p>
+        <!-- Hero Visual Showcase -->
+        <div class="hero-visual-card">
+          <img src="assets/image/malaysian-heritage-match.png" alt="Malaysian Heritage Match by Semestra Enterprise"
+            class="main-preview-img" />
+          <div class="hero-visual-footer">
+            <div class="item-info">
+              <h4>Malaysian Heritage Match</h4>
+              <p>Flagship Tabletop Game • 2-6 Players</p>
+            </div>
+            <div class="price-tag">RM 55</div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </header>
 
-    <!-- Floating WhatsApp Quick-Chat Button -->
-    <a href="https://wa.me/601128282939?text=Hello%20Semestra%20Enterprise%20team%2C%20I%20would%20like%20to%20inquire%20about%20your%20products!" target="_blank" rel="noopener" class="floating-whatsapp-btn" aria-label="Chat with us on WhatsApp">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-      </svg>
-      <span>WhatsApp Us</span>
-    </a>
+  <!-- Official Flagship Showcase Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Flagship Tabletop Creation</span>
+        <h2>Malaysian Heritage Match</h2>
+        <p>Carefully researched and crafted by the Semestra Enterprise student team to celebrate Malaysian state
+          diversity.</p>
+      </div>
 
-    <!-- Cookie & Local Storage Notice Banner -->
-    <aside id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie and storage notice">
-      <div class="cookie-banner-content">
-        <div class="cookie-banner-title">
-          <span>🍪</span>
-          <span>Cookie & Storage Notice</span>
+      <div id="featured-product-container">
+        <!-- Rendered cleanly via script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Official Products Grid Section -->
+  <section class="section-padding"
+    style="background: var(--bg-surface); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Official Collection</span>
+        <h2>Handcrafted Products & Games</h2>
+        <p>Every purchase directly supports student entrepreneurs under the JA Malaysia Young Enterprise Program.</p>
+      </div>
+
+      <div class="product-grid" style="margin-bottom: 2rem;">
+        <!-- Product 1: Malaysian Heritage Match -->
+        <article class="product-card">
+          <div class="product-card-header">
+            <img src="assets/image/malaysian-heritage-match.png" alt="Malaysian Heritage Match" />
+          </div>
+          <div class="product-card-body">
+            <h3>Malaysian Heritage Match</h3>
+            <p>Educational card game designed to teach players about Malaysian culture, traditions, food, and state
+              heritage.</p>
+            <div class="product-card-meta">
+              <div class="price-wrap">
+                <div class="price-main-row">
+                  <span class="price">RM 55</span>
+                </div>
+              </div>
+              <div class="product-card-actions">
+                <a href="product.html?id=1" class="btn btn-outline btn-sm">Details</a>
+                <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(1)">Order</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2: PipeCleaner Flowers -->
+        <article class="product-card">
+          <div class="product-card-header">
+            <img src="assets/image/pipecleaner-flowers.png" alt="PipeCleaner Flowers" />
+          </div>
+          <div class="product-card-body">
+            <h3>PipeCleaner Flowers</h3>
+            <p>Everlasting handmade sunflower arrangement in a ceramic pot. Vibrant blooming chenille petals
+              hand-crafted with care.</p>
+            <div class="product-card-meta">
+              <div class="price-wrap">
+                <div class="price-main-row">
+                  <span class="price">RM 15</span>
+                </div>
+              </div>
+              <div class="product-card-actions">
+                <a href="product.html?id=2" class="btn btn-outline btn-sm">Details</a>
+                <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(2)">Order</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3: Handmade Hairclips -->
+        <article class="product-card">
+          <div class="product-card-header">
+            <img src="assets/image/handmade-hairclips.png" alt="Handmade Hairclips" />
+          </div>
+          <div class="product-card-body">
+            <h3>Handmade Hairclips</h3>
+            <p>Delightful handcrafted yellow and white floral pipe-cleaner hairclip with sturdy grip. Adds a cute
+              aesthetic pop.</p>
+            <div class="product-card-meta">
+              <div class="price-wrap">
+                <span class="price">RM 4</span>
+                <span class="old-price">RM 8</span>
+              </div>
+              <div class="product-card-actions">
+                <a href="product.html?id=3" class="btn btn-outline btn-sm">Details</a>
+                <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(3)">Order</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4: Pixel-Art Heritage Keychains -->
+        <article class="product-card">
+          <div class="product-card-header">
+            <img src="assets/image/pixel-art-keychains.png" alt="Pixel-Art Heritage Keychains" />
+          </div>
+          <div class="product-card-body">
+            <h3>Pixel-Art Heritage Keychains</h3>
+            <p>Handmade fuse-bead pixel-art keychains featuring cute characters (Zootopia Judy & Nick, Tulip, Apple).
+              Durable and lightweight.</p>
+            <div class="product-card-meta">
+              <div class="price-wrap">
+                <span class="price">RM 4</span>
+                <span class="old-price">RM 8</span>
+              </div>
+              <div class="product-card-actions">
+                <a href="product.html?id=4" class="btn btn-outline btn-sm">Details</a>
+                <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(4)">Order</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener"
+          class="btn btn-outline btn-lg">
+          <span>View Official Storefront on JA Malaysia Mall</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Semestra Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Our Mission</span>
+        <h2>Why Choose Semestra Enterprise</h2>
+        <p>Created with dedication by student entrepreneurs under the guidance of JA Malaysia.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <h3>Cultural Preservation</h3>
+          <p>Making cultural learning engaging, tactile, and relatable for youth, students, and families across
+            Malaysia.</p>
         </div>
-        <p>
-          We use browser local storage to remember your theme preference (Light/Dark mode) across pages. No personal data is tracked or sold. You can opt out anytime.
-        </p>
-        <div class="cookie-banner-actions">
-          <button type="button" id="cookie-accept-btn" class="btn btn-primary btn-sm">Accept</button>
-          <button type="button" id="cookie-decline-btn" class="btn btn-outline btn-sm">Opt Out</button>
+
+        <div class="value-card">
+          <div class="value-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+          </div>
+          <h3>Young Enterprise Excellence</h3>
+          <p>Developed with thorough research and authentic cultural insights under Junior Achievement Malaysia.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3>Screen-Free Connection</h3>
+          <p>Sparking memorable conversations, classroom laughter, and cultural pride around the tabletop.</p>
         </div>
       </div>
-    </aside>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
-  </body>
+  <!-- Call to Action Banner -->
+  <section class="container">
+    <div class="cta-banner">
+      <h2>Order Directly from Semestra Enterprise</h2>
+      <p>Support student entrepreneurship today. Contact our team directly on WhatsApp (011-2828 2939) or place your
+        order online.</p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <button type="button" class="btn btn-primary btn-lg" onclick="openOrderModal(1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+            </path>
+          </svg>
+          <span>Order via WhatsApp (011-2828 2939)</span>
+        </button>
+        <a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener"
+          class="btn btn-outline btn-lg">
+          <span>JA Malaysia Mall Store</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Modal -->
+  <div id="order-modal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeOrderModal()" aria-label="Close modal">✕</button>
+      <span
+        style="font-size: 0.82rem; font-weight: 700; color: var(--text-heading-gold); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Direct
+        Order Inquiry</span>
+      <h3 id="modal-product-name" style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 0.25rem;">
+        Malaysian Heritage Match</h3>
+      <p id="modal-product-price"
+        style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary); margin-bottom: 1.5rem;">RM 55</p>
+
+      <div class="form-group">
+        <label for="order-customer-name">Your Name / School / Organization</label>
+        <input type="text" id="order-customer-name" class="form-control"
+          placeholder="e.g. Cikgu Aisyah / SMK Sri Bintang" />
+      </div>
+
+      <div class="form-group">
+        <label for="order-qty">Quantity</label>
+        <input type="number" id="order-qty" class="form-control" min="1" max="100" value="1" />
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        Connect with our student enterprise team directly:
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <button type="button" class="btn btn-primary" onclick="sendWhatsAppOrder()"
+          style="background: #16A34A; border-color: #16A34A;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+            </path>
+          </svg>
+          <span>WhatsApp</span>
+        </button>
+        <button type="button" class="btn btn-outline" onclick="sendEmailOrder()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>Email</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" />
+          <p>
+            Semestra Enterprise is a student-led company from <strong>SMK Pantai Sepang Putra</strong> under the JA
+            Malaysia Young Enterprise Program 2026, celebrating Malaysian heritage and handcrafted creations.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="https://jamalaysia.org.my/JAMall/semestraenterprise/" target="_blank" rel="noopener">JAMall
+                Storefront</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul>
+            <li><a href="tel:01128282939">Phone: 011-2828 2939</a></li>
+            <li><a href="mailto:semestraenterprise@gmail.com">semestraenterprise@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/semestraenterprise" target="_blank" rel="noopener">Instagram:
+                @semestraenterprise</a></li>
+            <li><a href="contact.html">School & Bulk Inquiries</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
+        <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+          <a href="privacy.html" style="color: #94A3B8; font-size: 0.82rem; text-decoration: underline;">Privacy
+            Policy</a>
+          <button type="button" class="cookie-settings-link">Cookie Notice</button>
+          <p style="color: #FBBF24; font-weight: 600; margin: 0;">JA Malaysia • Young Enterprise Program 2026</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Quick-Chat Button -->
+  <a href="https://wa.me/601128282939?text=Hello%20Semestra%20Enterprise%20team%2C%20I%20would%20like%20to%20inquire%20about%20your%20products!"
+    target="_blank" rel="noopener" class="floating-whatsapp-btn" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path
+        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+      </path>
+    </svg>
+    <span>WhatsApp Us</span>
+  </a>
+
+  <!-- Cookie & Local Storage Notice Banner -->
+  <aside id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie and storage notice">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-title">
+        <span>🍪</span>
+        <span>Cookie & Storage Notice</span>
+      </div>
+      <p>
+        We use browser local storage to remember your theme preference (Light/Dark mode) across pages. No personal data
+        is tracked or sold. You can opt out anytime.
+      </p>
+      <div class="cookie-banner-actions">
+        <button type="button" id="cookie-accept-btn" class="btn btn-primary btn-sm">Accept</button>
+        <button type="button" id="cookie-decline-btn" class="btn btn-outline btn-sm">Opt Out</button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

@@ -411,6 +411,10 @@ function renderCatalogGrid() {
       </div>
     </article>
   `).join('');
+
+  if (typeof initScrollReveal === 'function') {
+    initScrollReveal();
+  }
 }
 
 function resetFilters() {
@@ -683,7 +687,40 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSingleProduct();
   }
 
+/* ==========================================================================
+   SCROLL REVEAL OBSERVER
+   ========================================================================== */
+function initScrollReveal() {
+  if (typeof IntersectionObserver === 'undefined') {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.08,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  const targets = document.querySelectorAll(
+    '.product-card, .value-card, .faq-item, .story-card, .cta-banner, .deck-showcase-section, .contact-card, .flagship-showcase-card, .reveal-on-scroll'
+  );
+  
+  targets.forEach(el => {
+    el.classList.add('reveal-on-scroll');
+    observer.observe(el);
+  });
+}
+
   setupFAQ();
   setupContactForm();
   CookieNotice.init();
+  initScrollReveal();
 });

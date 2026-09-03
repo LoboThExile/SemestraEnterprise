@@ -2027,3 +2027,209 @@ footer {
     transition: none !important;
   }
 }
+
+/* ==========================================================================
+   SALES HALTED - NOTICES, BADGES & DISABLED BUTTONS
+   ========================================================================== */
+
+/* Top Site-Wide Notice Banner */
+.site-notice-banner {
+  background: linear-gradient(90deg, #881337 0%, #991B1B 50%, #881337 100%);
+  color: #FFFFFF;
+  border-bottom: 1px solid rgba(254, 202, 202, 0.25);
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .site-notice-banner {
+  background: linear-gradient(90deg, #FEF2F2 0%, #FEE2E2 50%, #FEF2F2 100%);
+  color: #7F1D1D;
+  border-bottom: 1px solid #FECACA;
+  box-shadow: 0 2px 6px rgba(185, 28, 28, 0.08);
+}
+
+.site-notice-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.notice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #DC2626;
+  color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+  flex-shrink: 0;
+}
+
+[data-theme="light"] .notice-badge {
+  background: #B91C1C;
+  color: #FFFFFF;
+  box-shadow: 0 1px 4px rgba(185, 28, 28, 0.3);
+}
+
+.notice-message {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.notice-message strong {
+  font-weight: 700;
+}
+
+/* Product Card Halted Badge */
+.product-card-header {
+  position: relative;
+}
+
+.product-halted-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: rgba(185, 28, 28, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(254, 202, 202, 0.3);
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Inline Halted Status Badges */
+.status-badge-halted {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #F87171;
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: var(--radius-full);
+}
+
+[data-theme="light"] .status-badge-halted {
+  color: #B91C1C;
+  background: #FEE2E2;
+  border-color: #FCA5A5;
+}
+
+/* Disabled Halted Buttons */
+.btn-halted {
+  background: var(--bg-surface-elevated) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border-medium) !important;
+  cursor: not-allowed !important;
+  opacity: 0.85;
+  box-shadow: none !important;
+  transform: none !important;
+  position: relative;
+}
+
+.btn-halted:hover,
+.btn-halted:active,
+.btn-halted:focus {
+  background: var(--bg-surface-elevated) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border-medium) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Alert Callout Containers */
+.hero-alert-banner,
+.catalog-halt-notice,
+.product-halted-alert,
+.halt-info-box {
+  background: rgba(185, 28, 28, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.32);
+  border-left: 4px solid #DC2626;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  text-align: left;
+}
+
+[data-theme="light"] .hero-alert-banner,
+[data-theme="light"] .catalog-halt-notice,
+[data-theme="light"] .product-halted-alert,
+[data-theme="light"] .halt-info-box {
+  background: #FEF2F2;
+  border-color: #FECACA;
+  border-left-color: #DC2626;
+}
+
+.hero-alert-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: #EF4444;
+  margin-top: 0.15rem;
+}
+
+[data-theme="light"] .hero-alert-icon {
+  color: #DC2626;
+}
+
+.hero-alert-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.hero-alert-text strong {
+  font-size: 1rem;
+  color: #F87171;
+}
+
+[data-theme="light"] .hero-alert-text strong {
+  color: #B91C1C;
+}
+
+.hero-visual-card .status-pill-halted {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(185, 28, 28, 0.95);
+  color: #FFFFFF;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}

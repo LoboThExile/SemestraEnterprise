@@ -5,6 +5,19 @@
    ========================================================================== */
 
 /* ==========================================================================
+   GLOBAL SALES STATUS CONTROLLER
+   Set SALES_HALTED = 'yes' to show that all sales have been halted and any
+   purchases or orders will not be accepted across all pages.
+   Set SALES_HALTED = 'no' to enable normal sales and ordering.
+   ========================================================================== */
+var SALES_HALTED = 'yes';
+
+function isSalesHalted() {
+  return typeof SALES_HALTED !== 'undefined' &&
+    (String(SALES_HALTED).trim().toLowerCase() === 'yes' || SALES_HALTED === true);
+}
+
+/* ==========================================================================
    THEME MANAGER (3 MODES: SYSTEM, LIGHT, DARK)
    ========================================================================== */
 const ThemeManager = {
@@ -21,7 +34,7 @@ const ThemeManager = {
   apply(setting) {
     const root = document.documentElement;
     const resolvedTheme = setting === 'system' ? this.getSystemTheme() : setting;
-    
+
     root.setAttribute('data-theme', resolvedTheme);
     root.setAttribute('data-theme-setting', setting);
 
@@ -39,7 +52,7 @@ const ThemeManager = {
   updateUI(setting, resolvedTheme) {
     const label = document.getElementById('theme-active-label');
     const iconContainer = document.getElementById('theme-active-icon');
-    
+
     const icons = {
       system: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`,
       light: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`,
@@ -322,9 +335,12 @@ function initFeaturedProduct() {
   const featured = products.find(p => p.featured && p.active) || products[0];
   if (!featured) return;
 
+  const halted = isSalesHalted();
+
   container.innerHTML = `
     <div class="flagship-showcase-card">
-      <div class="flagship-img-side">
+      <div class="flagship-img-side" style="position: relative;">
+        ${halted ? '<span class="status-pill-halted" style="position: absolute; top: 14px; left: 14px; z-index: 5;">Sales Halted</span>' : ''}
         <img src="${featured.image}" alt="${featured.name}" />
       </div>
       <div class="flagship-content-side">
@@ -338,8 +354,9 @@ function initFeaturedProduct() {
           2 – 6 Players &nbsp;•&nbsp; 15 – 30 Mins &nbsp;•&nbsp; Ages 6+ &nbsp;•&nbsp; Bilingual (ENG / BM)
         </p>
 
-        <div class="flagship-price-bar">
+        <div class="flagship-price-bar" style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
           <span class="amount">${featured.price}</span>
+          ${halted ? '<span class="status-badge-halted">Sales Halted</span>' : ''}
         </div>
 
         <div class="flagship-actions">
@@ -350,9 +367,10 @@ function initFeaturedProduct() {
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
-          <button type="button" class="btn btn-primary" onclick="openOrderModal(${featured.id})">
-            <span>Order Now (${featured.price})</span>
-          </button>
+          ${halted
+      ? '<button type="button" class="btn btn-halted" disabled><span>Sales Halted (Orders Closed)</span></button>'
+      : `<button type="button" class="btn btn-primary" onclick="openOrderModal(${featured.id})"><span>Order Now (${featured.price})</span></button>`
+    }
         </div>
       </div>
     </div>
@@ -369,11 +387,13 @@ function renderCatalogGrid() {
   const container = document.getElementById('products-grid');
   if (!container) return;
 
+  const halted = isSalesHalted();
+
   const filtered = products.filter(p => {
     if (!p.active) return false;
-    const matchesCategory = currentCategory === 'all' || 
+    const matchesCategory = currentCategory === 'all' ||
       (Array.isArray(p.category) ? p.category.includes(currentCategory) : p.category === currentCategory);
-    const matchesSearch = currentSearchTerm === '' || 
+    const matchesSearch = currentSearchTerm === '' ||
       p.name.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
       p.shortDescription.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
       p.categoryName.toLowerCase().includes(currentSearchTerm.toLowerCase());
@@ -392,7 +412,8 @@ function renderCatalogGrid() {
 
   container.innerHTML = filtered.map(p => `
     <article class="product-card">
-      <div class="product-card-header">
+      <div class="product-card-header" style="position: relative;">
+        ${halted ? '<span class="product-halted-badge">Sales Halted</span>' : ''}
         <img src="${p.image}" alt="${p.name}" />
       </div>
       <div class="product-card-body">
@@ -405,7 +426,10 @@ function renderCatalogGrid() {
           </div>
           <div class="product-card-actions">
             <a href="product.html?id=${p.id}" class="btn btn-outline btn-sm">Details</a>
-            <button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(${p.id})">Order</button>
+            ${halted
+      ? '<button type="button" class="btn btn-halted btn-sm" disabled title="All sales have been halted">Sales Halted</button>'
+      : `<button type="button" class="btn btn-primary btn-sm" onclick="openOrderModal(${p.id})">Order</button>`
+    }
           </div>
         </div>
       </div>
@@ -507,8 +531,17 @@ function loadSingleProduct() {
   // Setup Order Modal Button
   const orderBtn = document.getElementById('btn-open-order-modal');
   if (orderBtn) {
-    orderBtn.textContent = `Order Now (${product.price})`;
-    orderBtn.onclick = () => openOrderModal(product.id);
+    if (isSalesHalted()) {
+      orderBtn.textContent = 'Sales Halted (Orders Closed)';
+      orderBtn.disabled = true;
+      orderBtn.className = 'btn btn-halted btn-lg';
+      orderBtn.onclick = null;
+    } else {
+      orderBtn.textContent = `Order Now (${product.price})`;
+      orderBtn.disabled = false;
+      orderBtn.className = 'btn btn-primary btn-lg';
+      orderBtn.onclick = () => openOrderModal(product.id);
+    }
   }
 
   // Toggle Card Deck Showcase
@@ -526,7 +559,7 @@ let selectedProductId = 1;
 function openOrderModal(productId) {
   selectedProductId = productId || 1;
   const product = products.find(p => p.id === selectedProductId) || products[0];
-  
+
   const modal = document.getElementById('order-modal');
   if (!modal) return;
 
@@ -534,7 +567,12 @@ function openOrderModal(productId) {
   setText('#modal-product-price', product.price);
 
   const qtyInput = document.getElementById('order-qty');
-  if (qtyInput) qtyInput.value = 1;
+  if (qtyInput) {
+    qtyInput.value = 1;
+    if (isSalesHalted()) {
+      qtyInput.disabled = true;
+    }
+  }
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -548,6 +586,11 @@ function closeOrderModal() {
 }
 
 function sendWhatsAppOrder() {
+  if (isSalesHalted()) {
+    alert('Notice: All sales have been halted and any purchases or orders will not be accepted. For general inquiries, please contact our team via the contact page.');
+    return;
+  }
+
   const product = products.find(p => p.id === selectedProductId) || products[0];
   const qtyInput = document.getElementById('order-qty');
   const qty = qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
@@ -556,13 +599,18 @@ function sendWhatsAppOrder() {
 
   const totalPrice = product.priceNumber ? product.priceNumber * qty : qty * 10;
   const message = `Hello Semestra Enterprise Team!\n\nI would like to order:\n- Item: ${product.name}\n- Price: ${product.price} each\n- Quantity: ${qty}\n- Estimated Total: RM ${totalPrice}\n- Name/School: ${name}\n\nPlease share payment and postage details. Thank you!`;
-  
+
   const encodedMsg = encodeURIComponent(message);
   // Official Semestra Enterprise contact number from JAMall
   window.open(`https://wa.me/601128282939?text=${encodedMsg}`, '_blank');
 }
 
 function sendEmailOrder() {
+  if (isSalesHalted()) {
+    alert('Notice: All sales have been halted and any purchases or orders will not be accepted. For general inquiries, please contact our team via the contact page.');
+    return;
+  }
+
   const product = products.find(p => p.id === selectedProductId) || products[0];
   const qtyInput = document.getElementById('order-qty');
   const qty = qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
@@ -627,9 +675,293 @@ function setupContactForm() {
 }
 
 /* ==========================================================================
+   GLOBAL SALES HALTED CHECKER (RUNS ON EVERY PAGE)
+   Checks var SALES_HALTED ('yes' or 'no')
+   ========================================================================== */
+function checkSalesHaltedStatus() {
+  const halted = isSalesHalted();
+
+  // 1. Top site-wide notification banner
+  let banner = document.getElementById('site-notice-banner');
+  if (halted) {
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'site-notice-banner';
+      banner.className = 'site-notice-banner';
+      banner.setAttribute('role', 'region');
+      banner.setAttribute('aria-label', 'Important Sales Notice');
+      banner.innerHTML = `
+        <div class="container site-notice-container">
+          <span class="notice-badge">NOTICE</span>
+          <p class="notice-message">
+            <strong>All sales have been halted.</strong> Any purchases or orders will not be accepted. Thank you for your support!
+          </p>
+        </div>
+      `;
+      const nav = document.querySelector('nav');
+      if (nav && nav.parentNode) {
+        nav.parentNode.insertBefore(banner, nav);
+      } else {
+        document.body.prepend(banner);
+      }
+    }
+  } else if (banner) {
+    banner.remove();
+  }
+
+  // 2. Homepage Hero Alert & Visual Card Badge
+  const heroText = document.querySelector('.hero-text');
+  if (heroText) {
+    let heroAlert = document.getElementById('hero-halted-alert');
+    if (halted) {
+      if (!heroAlert) {
+        heroAlert = document.createElement('div');
+        heroAlert.id = 'hero-halted-alert';
+        heroAlert.className = 'hero-alert-banner';
+        heroAlert.innerHTML = `
+          <svg class="hero-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div class="hero-alert-text">
+            <strong>Notice: All Sales Halted</strong>
+            <span>Sales operations have ended. Any purchases or orders will not be accepted.</span>
+          </div>
+        `;
+        const lead = heroText.querySelector('.lead') || heroText.querySelector('p');
+        if (lead && lead.nextSibling) {
+          heroText.insertBefore(heroAlert, lead.nextSibling);
+        } else {
+          heroText.appendChild(heroAlert);
+        }
+      }
+    } else if (heroAlert) {
+      heroAlert.remove();
+    }
+  }
+
+  const heroVisual = document.querySelector('.hero-visual-card');
+  if (heroVisual) {
+    let heroPill = heroVisual.querySelector('.status-pill-halted');
+    if (halted) {
+      if (!heroPill) {
+        heroPill = document.createElement('span');
+        heroPill.className = 'status-pill-halted';
+        heroPill.textContent = 'Sales Halted';
+        heroVisual.appendChild(heroPill);
+      }
+    } else if (heroPill) {
+      heroPill.remove();
+    }
+  }
+
+  // 3. Homepage CTA Banner
+  const ctaBanner = document.querySelector('.cta-banner');
+  if (ctaBanner) {
+    const ctaH2 = ctaBanner.querySelector('h2');
+    const ctaP = ctaBanner.querySelector('p');
+    if (halted) {
+      if (ctaH2) ctaH2.textContent = 'Sales Have Been Officially Halted';
+      if (ctaP) ctaP.textContent = 'Semestra Enterprise has officially concluded all product sales. Any purchases, payments, or orders will not be accepted. We sincerely thank everyone for your incredible support!';
+      const ctaOrderBtn = ctaBanner.querySelector('button[onclick*="openOrderModal"]');
+      if (ctaOrderBtn) {
+        ctaOrderBtn.outerHTML = '<a href="contact.html" class="btn btn-primary btn-lg"><span>General Inquiries & Feedback</span></a>';
+      }
+    }
+  }
+
+  // 4. Products Page Catalog Notice
+  const catalogControls = document.querySelector('.catalog-controls');
+  if (catalogControls && catalogControls.parentNode) {
+    let catalogAlert = document.getElementById('catalog-halt-notice');
+    if (halted) {
+      if (!catalogAlert) {
+        catalogAlert = document.createElement('div');
+        catalogAlert.id = 'catalog-halt-notice';
+        catalogAlert.className = 'catalog-halt-notice';
+        catalogAlert.innerHTML = `
+          <svg class="hero-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div class="hero-alert-text">
+            <strong>Catalog Archive Notice: All Sales Halted</strong>
+            <span>Any purchases or orders will not be accepted. Products are displayed for portfolio and exhibition purposes.</span>
+          </div>
+        `;
+        catalogControls.parentNode.insertBefore(catalogAlert, catalogControls);
+      }
+    } else if (catalogAlert) {
+      catalogAlert.remove();
+    }
+  }
+
+  // 5. Product Detail Page Alert & Button State
+  const productInfoCol = document.querySelector('.product-info-column');
+  if (productInfoCol) {
+    let detailAlert = document.getElementById('product-halted-alert');
+    if (halted) {
+      if (!detailAlert) {
+        detailAlert = document.createElement('div');
+        detailAlert.id = 'product-halted-alert';
+        detailAlert.className = 'product-halted-alert';
+        detailAlert.innerHTML = `
+          <svg class="hero-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div class="hero-alert-text">
+            <strong>Sales Halted</strong>
+            <span>Purchases and orders are no longer being accepted for this creation or any items.</span>
+          </div>
+        `;
+        const title = productInfoCol.querySelector('h1') || productInfoCol.firstChild;
+        if (title) {
+          productInfoCol.insertBefore(detailAlert, title);
+        }
+      }
+
+      const priceEl = document.getElementById('product-price');
+      if (priceEl && !priceEl.querySelector('.status-badge-halted')) {
+        const badge = document.createElement('span');
+        badge.className = 'status-badge-halted';
+        badge.style.marginLeft = '0.75rem';
+        badge.style.verticalAlign = 'middle';
+        badge.textContent = 'Sales Halted';
+        priceEl.appendChild(badge);
+      }
+    } else if (detailAlert) {
+      detailAlert.remove();
+    }
+  }
+
+  // 6. Contact Page Alert
+  const contactLayout = document.querySelector('.contact-layout');
+  if (contactLayout && contactLayout.parentNode) {
+    let contactAlert = document.getElementById('contact-halt-alert');
+    if (halted) {
+      if (!contactAlert) {
+        contactAlert = document.createElement('div');
+        contactAlert.id = 'contact-halt-alert';
+        contactAlert.className = 'halt-info-box';
+        contactAlert.innerHTML = `
+          <svg class="hero-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div class="hero-alert-text">
+            <strong>Notice: All Sales Have Been Halted</strong>
+            <span>School, bulk, and individual purchases or orders will not be accepted. You are welcome to contact our student team for general inquiries, feedback, and exhibition questions.</span>
+          </div>
+        `;
+        contactLayout.parentNode.insertBefore(contactAlert, contactLayout);
+      }
+    } else if (contactAlert) {
+      contactAlert.remove();
+    }
+  }
+
+  // 7. FAQ Page Alert
+  const faqCategory = document.querySelector('.faq-category');
+  if (faqCategory && faqCategory.parentNode) {
+    let faqAlert = document.getElementById('faq-halt-alert');
+    if (halted) {
+      if (!faqAlert) {
+        faqAlert = document.createElement('div');
+        faqAlert.id = 'faq-halt-alert';
+        faqAlert.className = 'halt-info-box';
+        faqAlert.style.marginBottom = '2rem';
+        faqAlert.innerHTML = `
+          <svg class="hero-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div class="hero-alert-text">
+            <strong>Notice: All Product Sales Have Been Halted</strong>
+            <span>Semestra Enterprise has concluded commercial operations. Any purchases, orders, or payments will not be accepted.</span>
+          </div>
+        `;
+        faqCategory.parentNode.insertBefore(faqAlert, faqCategory);
+      }
+    } else if (faqAlert) {
+      faqAlert.remove();
+    }
+  }
+
+  // 8. Static Product Cards on Index Page (without modifying image elements)
+  document.querySelectorAll('.product-grid .product-card').forEach(card => {
+    const header = card.querySelector('.product-card-header');
+    if (header) {
+      let badge = header.querySelector('.product-halted-badge');
+      if (halted) {
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'product-halted-badge';
+          badge.textContent = 'Sales Halted';
+          header.appendChild(badge);
+        }
+      } else if (badge) {
+        badge.remove();
+      }
+    }
+
+    const orderBtn = card.querySelector('.product-card-actions button[onclick*="openOrderModal"]');
+    if (orderBtn) {
+      if (halted) {
+        orderBtn.outerHTML = '<button type="button" class="btn btn-halted btn-sm" disabled title="All sales have been halted">Sales Halted</button>';
+      }
+    }
+  });
+
+  // 9. Order Modal UI Configuration
+  const modal = document.getElementById('order-modal');
+  if (modal) {
+    let modalNotice = modal.querySelector('#modal-halt-notice');
+    if (halted) {
+      if (!modalNotice) {
+        modalNotice = document.createElement('div');
+        modalNotice.id = 'modal-halt-notice';
+        modalNotice.className = 'halt-info-box';
+        modalNotice.style.margin = '1rem 0 1.25rem';
+        modalNotice.innerHTML = `
+          <div class="hero-alert-text">
+            <strong style="color: #EF4444; font-size: 0.95rem;">⚠️ All Sales Have Been Halted</strong>
+            <span style="font-size: 0.85rem;">Any purchases, payments, or order requests will not be accepted. We sincerely thank you for your support!</span>
+          </div>
+        `;
+        const modalPrice = modal.querySelector('#modal-product-price') || modal.querySelector('h3');
+        if (modalPrice && modalPrice.nextSibling) {
+          modalPrice.parentNode.insertBefore(modalNotice, modalPrice.nextSibling);
+        }
+      }
+      const qtyInput = document.getElementById('order-qty');
+      if (qtyInput) qtyInput.disabled = true;
+      const orderActionBtns = modal.querySelectorAll('button[onclick*="Order"]');
+      orderActionBtns.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add('btn-halted');
+        btn.style.opacity = '0.6';
+        btn.style.cursor = 'not-allowed';
+      });
+    } else {
+      if (modalNotice) modalNotice.remove();
+      const qtyInput = document.getElementById('order-qty');
+      if (qtyInput) qtyInput.disabled = false;
+    }
+  }
+}
+
+/* ==========================================================================
    INIT ON DOM LOAD
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
+  // Check sales halted switch first
+  checkSalesHaltedStatus();
   // Initialize Theme Manager
   ThemeManager.init();
 
@@ -687,37 +1019,37 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSingleProduct();
   }
 
-/* ==========================================================================
-   SCROLL REVEAL OBSERVER
-   ========================================================================== */
-function initScrollReveal() {
-  if (typeof IntersectionObserver === 'undefined') {
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
-    return;
-  }
+  /* ==========================================================================
+     SCROLL REVEAL OBSERVER
+     ========================================================================== */
+  function initScrollReveal() {
+    if (typeof IntersectionObserver === 'undefined') {
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('revealed'));
+      return;
+    }
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        obs.unobserve(entry.target);
-      }
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
     });
-  }, {
-    root: null,
-    threshold: 0.08,
-    rootMargin: '0px 0px -30px 0px'
-  });
 
-  const targets = document.querySelectorAll(
-    '.product-card, .value-card, .faq-item, .story-card, .cta-banner, .deck-showcase-section, .contact-card, .flagship-showcase-card, .reveal-on-scroll'
-  );
-  
-  targets.forEach(el => {
-    el.classList.add('reveal-on-scroll');
-    observer.observe(el);
-  });
-}
+    const targets = document.querySelectorAll(
+      '.product-card, .value-card, .faq-item, .story-card, .cta-banner, .deck-showcase-section, .contact-card, .flagship-showcase-card, .reveal-on-scroll'
+    );
+
+    targets.forEach(el => {
+      el.classList.add('reveal-on-scroll');
+      observer.observe(el);
+    });
+  }
 
   setupFAQ();
   setupContactForm();

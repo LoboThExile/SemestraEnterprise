@@ -3,16 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Semestra Enterprise</title>
+    <meta name="description" content="About Semestra Enterprise: Preserving and promoting Malaysian and Southeast Asian heritage through educational games.">
+    <title>About Us | Semestra Enterprise</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav aria-label="Main Navigation">
       <div class="container">
-        <a href="index.html">
-          <img src="assets/image/logo.jpeg" alt="Semestra Enterprise Logo" href class="logo">
-        </a>
-        <span class="menu-toggle">&#9776;</span>
+        <div class="brand-wrapper">
+          <a href="index.html" class="logo-link" aria-label="Semestra Enterprise Home">
+            <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo">
+          </a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
@@ -21,38 +27,56 @@
         </div>
       </div>
     </nav>
-    <section class="hero">
-      <div class="container">
-        <h1>About Semestra Enterprise</h1>
-        <p>Preserving and promoting Malaysian culture through educational products</p>
-      </div>
-    </section>
-    <div class="divider"></div>
-    <section>
-      <div class="container">
-        <h2>Our Mission</h2>
-        <p>Semestra Enterprise is a small indie business dedicated to making learning Malaysian culture fun and accessible. We create educational products that help people, especially younger audiences, appreciate and understand the rich heritage of Malaysia and Southeast Asia.</p>
-        <h2>Our Products</h2>
-        <p>Our flagship product, Malaysian Heritage Match, is a card-based educational game that unite Malaysia Culture to life. It's designed to be both entertaining and informative, perfect for students, families, and casual players.</p>
-        <h2>Our Values</h2>
-        <ul>
-          <li>
-            <strong>Cultural Appreciation:</strong> We believe in the importance of understanding and appreciating diverse cultures.
-          </li>
-          <li>
-            <strong>Educational Excellence:</strong> Our products are designed to be both fun and educational.
-          </li>
-          <li>
-            <strong>Accessibility:</strong> We aim to make cultural learning accessible to everyone.
-          </li>
-          <li>
-            <strong>Quality:</strong> We are committed and enlighted to creating high-quality, engaging products.
-          </li>
-        </ul>
-      </div>
-    </section>
+
+    <main id="main-content">
+      <header class="hero">
+        <div class="container">
+          <h1>About Semestra Enterprise</h1>
+          <p>Preserving and celebrating Malaysian and Southeast Asian heritage through interactive learning and educational games.</p>
+        </div>
+      </header>
+
+      <section>
+        <div class="container">
+          <div class="content-box">
+            <h2>Our Mission</h2>
+            <p>Semestra Enterprise is an indie educational publisher dedicated to making Southeast Asian cultural heritage accessible and engaging. We design tabletop games and interactive media that help students, families, and casual players discover and appreciate the region's rich traditions, folklore, and history.</p>
+
+            <h2>Our Flagship Title</h2>
+            <p>Our flagship educational card game, <em>Malaysian Heritage Match</em>, brings Malaysian culture to life through fast-paced matching and educational trivia. Designed for players of all ages, it introduces cultural motifs, traditional arts, foods, and landmarks in an approachable format.</p>
+
+            <h2>Our Core Values</h2>
+            <div class="values-list">
+              <div class="value-item">
+                <strong>Cultural Appreciation</strong>
+                <p>Highlighting the depth and diversity of Malaysian and Southeast Asian customs with authenticity and care.</p>
+              </div>
+              <div class="value-item">
+                <strong>Interactive Education</strong>
+                <p>Creating learning tools where fun and knowledge reinforce each other naturally.</p>
+              </div>
+              <div class="value-item">
+                <strong>Universal Accessibility</strong>
+                <p>Ensuring our games are easy to learn, affordable, and welcoming to learners of all backgrounds.</p>
+              </div>
+              <div class="value-item">
+                <strong>Craft & Quality</strong>
+                <p>Committed to thoughtful design, balanced gameplay, and durable physical components.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <footer>
       <div class="container">
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
         <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
       </div>
     </footer>

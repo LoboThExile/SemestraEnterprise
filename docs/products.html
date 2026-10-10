@@ -3,16 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Semestra Enterprise</title>
+    <meta name="description" content="Explore educational games and cultural products from Semestra Enterprise.">
+    <title>Products | Semestra Enterprise</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav aria-label="Main Navigation">
       <div class="container">
-        <a href="index.html">
-          <img src="assets/image/logo.jpeg" alt="Semestra Enterprise Logo" href class="logo">
-        </a>
-        <span class="menu-toggle">&#9776;</span>
+        <div class="brand-wrapper">
+          <a href="index.html" class="logo-link" aria-label="Semestra Enterprise Home">
+            <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo">
+          </a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="products.html">Products</a>
@@ -21,20 +27,30 @@
         </div>
       </div>
     </nav>
-    <header class="hero">
-      <div class="container">
-        <h1>Our Products</h1>
-        <p>Explore the full range of educational products from Semestra Enter prise.</p>
-      </div>
-    </header>
-    <div class="divider"></div>
-    <section>
-      <div class="container">
-        <div class="product-grid" id="products-grid"></div>
-      </div>
-    </section>
+
+    <main id="main-content">
+      <header class="hero">
+        <div class="container">
+          <h1>Our Educational Products</h1>
+          <p>Explore cultural games designed to make learning Malaysian and Southeast Asian traditions engaging and accessible.</p>
+        </div>
+      </header>
+
+      <section>
+        <div class="container">
+          <div class="product-grid" id="products-grid"></div>
+        </div>
+      </section>
+    </main>
+
     <footer>
       <div class="container">
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
         <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
       </div>
     </footer>

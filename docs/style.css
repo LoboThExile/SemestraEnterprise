@@ -1,41 +1,42 @@
 /* ==========================================================================
    Semestra Enterprise: Style System
-   Grounded editorial styling for Malaysian and Southeast Asian heritage games
+   Modern Dark Game Studio styling for Malaysian cultural educational games
    ========================================================================== */
 
 :root {
-  /* Surface & Base Canvas */
-  --bg-canvas: #fbf9f5;
-  --bg-surface: #ffffff;
-  --bg-subtle: #f4efea;
-  --bg-inset: #eae3da;
+  /* Surfaces & Base Canvas */
+  --bg-canvas: #0d0f12;
+  --bg-surface: #16191f;
+  --bg-subtle: #1c2028;
+  --bg-inset: #111419;
 
-  /* Typography Colors */
-  --text-primary: #1e232a;
-  --text-secondary: #5a626c;
-  --text-muted: #747d88;
+  /* Typography */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
 
-  /* Borders & Dividers */
-  --border-color: #e6dfd5;
-  --border-subtle: #eee7df;
-  --border-strong: #c8beaf;
+  /* Structural Borders */
+  --border-color: #262b36;
+  --border-subtle: #1e232d;
+  --border-strong: #3b4252;
 
-  /* Brand Accents (Derived from Heritage Logo) */
-  --accent-primary: #c8413b;
-  --accent-hover: #b0322d;
-  --accent-soft: #f8dedd;
-  --accent-gold: #9c6e2e;
-  --focus-ring: #c8413b;
+  /* Brand Accents */
+  --accent-action: #d63031;
+  --accent-action-hover: #b71c1c;
+  --accent-coral: #f87171;
+  --accent-gold: #facc15;
+  --accent-gold-bg: rgba(250, 204, 21, 0.12);
+  --focus-ring: #f87171;
 
   /* Radii */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
 
-  /* Shadows (Restrained Elevation) */
-  --shadow-sm: 0 1px 3px rgba(30, 35, 42, 0.04);
-  --shadow-md: 0 4px 12px rgba(30, 35, 42, 0.06);
-  --shadow-lg: 0 8px 24px rgba(30, 35, 42, 0.08);
+  /* Restrained Studio Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================================================================
@@ -73,7 +74,7 @@ main {
   top: -60px;
   left: 1rem;
   background: var(--text-primary);
-  color: #ffffff;
+  color: var(--bg-canvas);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
   text-decoration: none;
@@ -88,7 +89,7 @@ main {
   outline-offset: 2px;
 }
 
-/* Visible Focus Indicator (WCAG AA / R-32) */
+/* Visible Focus Indicator */
 :focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
@@ -111,7 +112,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--bg-surface);
+  background: rgba(13, 15, 18, 0.95);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   padding: 0.75rem 0;
@@ -136,7 +137,7 @@ nav .container {
 }
 
 .logo {
-  height: 44px;
+  height: 42px;
   width: auto;
   max-width: 140px;
   object-fit: contain;
@@ -161,7 +162,7 @@ nav a {
 
 nav a:hover,
 nav a.active {
-  color: var(--accent-primary);
+  color: var(--text-primary);
 }
 
 nav a.active::after {
@@ -171,7 +172,7 @@ nav a.active::after {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--accent-primary);
+  background-color: var(--accent-coral);
 }
 
 /* Accessible Hamburger Toggle Button */
@@ -197,14 +198,14 @@ nav a.active::after {
    Hero Section
    ========================================================================== */
 .hero {
-  padding: 4.5rem 0 3.5rem;
+  padding: 5rem 0 3.75rem;
   text-align: center;
-  background: var(--bg-surface);
+  background: radial-gradient(circle at 50% 20%, #1a1e27 0%, var(--bg-canvas) 70%);
   border-bottom: 1px solid var(--border-color);
 }
 
 .hero-comp-logo {
-  max-width: 260px;
+  max-width: 240px;
   height: auto;
   margin: 0 auto 1.5rem;
   display: block;
@@ -213,11 +214,12 @@ nav a.active::after {
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
-  line-height: 1.25;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .hero p {
@@ -225,7 +227,7 @@ nav a.active::after {
   color: var(--text-secondary);
   max-width: 620px;
   margin: 0 auto 1.75rem;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .hero-actions {
@@ -243,34 +245,34 @@ nav a.active::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.6rem;
   border-radius: var(--radius-md);
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  background-color: var(--accent-primary);
+  background-color: var(--accent-action);
   color: #ffffff;
-  border: 1px solid var(--accent-primary);
+  border: 1px solid var(--accent-action);
   transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
 .btn:hover {
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background-color: var(--accent-action-hover);
+  border-color: var(--accent-action-hover);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background-color: var(--bg-surface);
   color: var(--text-primary);
   border: 1px solid var(--border-strong);
 }
 
 .btn-secondary:hover {
   background-color: var(--bg-subtle);
-  border-color: var(--text-primary);
-  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
@@ -298,6 +300,7 @@ section h2 {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
 }
 
 section .section-subtitle {
@@ -306,7 +309,7 @@ section .section-subtitle {
 }
 
 /* ==========================================================================
-   Featured Product Hero Card
+   Featured Product Card
    ========================================================================== */
 .featured-card {
   background: var(--bg-surface);
@@ -315,22 +318,24 @@ section .section-subtitle {
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1.25fr;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   margin-bottom: 3rem;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .featured-card:hover {
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .featured-card img {
   width: 100%;
   height: 100%;
   min-height: 280px;
-  object-fit: cover;
-  background: var(--bg-subtle);
+  object-fit: contain;
+  background: var(--bg-inset);
+  padding: 1.5rem;
+  border-right: 1px solid var(--border-color);
 }
 
 .featured-card .card-body {
@@ -349,9 +354,10 @@ section .section-subtitle {
   letter-spacing: 0.05em;
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-sm);
-  background-color: var(--accent-soft);
-  color: var(--accent-primary);
-  margin-bottom: 0.75rem;
+  background-color: var(--accent-gold-bg);
+  color: var(--accent-gold);
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  margin-bottom: 0.85rem;
 }
 
 .featured-card h3 {
@@ -371,7 +377,7 @@ section .section-subtitle {
 .featured-card .price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--accent-coral);
   margin-bottom: 1.25rem;
 }
 
@@ -393,20 +399,21 @@ section .section-subtitle {
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .product-card:hover {
   border-color: var(--border-strong);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .product-card img {
   width: 100%;
   height: 210px;
-  object-fit: cover;
-  background: var(--bg-subtle);
+  object-fit: contain;
+  background: var(--bg-inset);
+  padding: 1.25rem;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -435,7 +442,7 @@ section .section-subtitle {
 .product-card .price {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--accent-coral);
   margin-bottom: 1rem;
 }
 
@@ -452,16 +459,17 @@ section .section-subtitle {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .product-detail .product-image {
   width: 100%;
   max-height: 420px;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 1.5rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
-  background: var(--bg-subtle);
+  background: var(--bg-inset);
 }
 
 .product-info h1 {
@@ -475,7 +483,7 @@ section .section-subtitle {
 .product-info .price {
   font-size: 1.65rem;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--accent-coral);
   margin-bottom: 1.25rem;
 }
 
@@ -512,7 +520,7 @@ section .section-subtitle {
   content: "•";
   position: absolute;
   left: 0.25rem;
-  color: var(--accent-primary);
+  color: var(--accent-coral);
   font-weight: bold;
 }
 
@@ -524,7 +532,7 @@ section .section-subtitle {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   margin-bottom: 2rem;
 }
 
@@ -550,7 +558,7 @@ section .section-subtitle {
 .values-list {
   list-style: none;
   padding: 0;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.25rem;
@@ -572,6 +580,7 @@ section .section-subtitle {
 
 .value-item p {
   font-size: 0.925rem;
+  color: var(--text-secondary);
   margin-bottom: 0;
 }
 
@@ -586,11 +595,12 @@ section .section-subtitle {
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   text-align: center;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .contact-card h2 {
   font-size: 1.75rem;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
@@ -616,7 +626,7 @@ section .section-subtitle {
 }
 
 /* ==========================================================================
-   Footer (High Contrast / Accessible)
+   Footer
    ========================================================================== */
 footer {
   background: var(--bg-surface);
@@ -644,7 +654,7 @@ footer .footer-nav a {
 }
 
 footer .footer-nav a:hover {
-  color: var(--accent-primary);
+  color: var(--text-primary);
 }
 
 /* ==========================================================================
@@ -659,7 +669,8 @@ footer .footer-nav a:hover {
   margin: 2rem 0;
 }
 
-.empty-state h3 {
+.empty-state h3,
+.empty-state h2 {
   font-size: 1.25rem;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
@@ -700,7 +711,7 @@ footer .footer-nav a:hover {
     padding: 0.5rem 0;
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border-color);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
   }
 
   nav .nav-links.show {
@@ -723,6 +734,12 @@ footer .footer-nav a:hover {
 
   .featured-card {
     grid-template-columns: 1fr;
+  }
+
+  .featured-card img {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    min-height: 200px;
   }
 
   .featured-card .card-body {

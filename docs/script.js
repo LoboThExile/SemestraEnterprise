@@ -17,6 +17,28 @@ function isSalesHalted() {
     (String(SALES_HALTED).trim().toLowerCase() === 'yes' || SALES_HALTED === true);
 }
 
+
+/* Safe storage: localStorage can throw (private mode / blocked cookies).
+   Never let a storage failure break theme, menus, ordering or the whole page. */
+function safeStorageGet(key) {
+  try { return window.localStorage.getItem(key); } catch (e) { return null; }
+}
+function safeStorageSet(key, value) {
+  try { window.localStorage.setItem(key, value); } catch (e) { /* storage unavailable */ }
+}
+function safeStorageRemove(key) {
+  try { window.localStorage.removeItem(key); } catch (e) { /* storage unavailable */ }
+}
+function getOrderQuantity() {
+  const qtyInput = document.getElementById('order-qty');
+  let qty = qtyInput ? parseInt(qtyInput.value, 10) : 1;
+  if (!Number.isFinite(qty)) qty = 1;
+  qty = Math.min(100, Math.max(1, qty));
+  if (qtyInput) qtyInput.value = qty;
+  return qty;
+}
+let lastFocusedElement = null;
+
 /* ==========================================================================
    THEME MANAGER (3 MODES: SYSTEM, LIGHT, DARK)
    ========================================================================== */
@@ -24,7 +46,7 @@ const ThemeManager = {
   storageKey: 'semestra_theme_preference',
 
   getSavedPreference() {
-    return localStorage.getItem(this.storageKey) || 'system';
+    return safeStorageGet(this.storageKey) || 'system';
   },
 
   getSystemTheme() {
@@ -44,7 +66,7 @@ const ThemeManager = {
 
   set(setting) {
     if (CookieNotice.getConsent() !== 'declined') {
-      localStorage.setItem(this.storageKey, setting);
+      safeStorageSet(this.storageKey, setting);
     }
     this.apply(setting);
   },
@@ -99,12 +121,22 @@ const ThemeManager = {
     if (toggleBtn && dropdown) {
       toggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        dropdown.classList.toggle('show');
+        const isOpen = dropdown.classList.toggle('show');
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.focus();
+        }
       });
 
       document.addEventListener('click', (e) => {
         if (!toggleBtn.contains(e.target) && !dropdown.contains(e.target)) {
           dropdown.classList.remove('show');
+          toggleBtn.setAttribute('aria-expanded', 'false');
         }
       });
 
@@ -113,6 +145,7 @@ const ThemeManager = {
           const val = btn.dataset.themeValue;
           this.set(val);
           dropdown.classList.remove('show');
+          toggleBtn.setAttribute('aria-expanded', 'false');
         });
       });
     }
@@ -126,17 +159,17 @@ const CookieNotice = {
   storageKey: 'semestra_storage_consent',
 
   getConsent() {
-    return localStorage.getItem(this.storageKey);
+    return safeStorageGet(this.storageKey);
   },
 
   accept() {
-    localStorage.setItem(this.storageKey, 'accepted');
+    safeStorageSet(this.storageKey, 'accepted');
     this.hide();
   },
 
   optOut() {
-    localStorage.setItem(this.storageKey, 'declined');
-    localStorage.removeItem('semestra_theme_preference');
+    safeStorageSet(this.storageKey, 'declined');
+    safeStorageRemove('semestra_theme_preference');
     ThemeManager.set('system');
     this.hide();
   },
@@ -341,7 +374,7 @@ function initFeaturedProduct() {
     <div class="flagship-showcase-card">
       <div class="flagship-img-side" style="position: relative;">
         ${halted ? '<span class="status-pill-halted" style="position: absolute; top: 14px; left: 14px; z-index: 5;">Sales Halted</span>' : ''}
-        <img src="${featured.image}" alt="${featured.name}" />
+        <img src="${featured.image}" alt="${featured.name}" loading="lazy" decoding="async" />
       </div>
       <div class="flagship-content-side">
         <h3>${featured.name}</h3>
@@ -414,7 +447,7 @@ function renderCatalogGrid() {
     <article class="product-card">
       <div class="product-card-header" style="position: relative;">
         ${halted ? '<span class="product-halted-badge">Sales Halted</span>' : ''}
-        <img src="${p.image}" alt="${p.name}" />
+        <img src="${p.image}" alt="${p.name}" loading="lazy" decoding="async" />
       </div>
       <div class="product-card-body">
         <h3>${p.name}</h3>
@@ -557,6 +590,7 @@ function loadSingleProduct() {
 let selectedProductId = 1;
 
 function openOrderModal(productId) {
+  lastFocusedElement = document.activeElement;
   selectedProductId = productId || 1;
   const product = products.find(p => p.id === selectedProductId) || products[0];
 
@@ -576,6 +610,8 @@ function openOrderModal(productId) {
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+  const closeBtn = modal.querySelector('.modal-close-btn');
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeOrderModal() {
@@ -583,6 +619,10 @@ function closeOrderModal() {
   if (!modal) return;
   modal.classList.remove('open');
   document.body.style.overflow = '';
+  if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
 }
 
 function sendWhatsAppOrder() {
@@ -592,8 +632,7 @@ function sendWhatsAppOrder() {
   }
 
   const product = products.find(p => p.id === selectedProductId) || products[0];
-  const qtyInput = document.getElementById('order-qty');
-  const qty = qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
+  const qty = getOrderQuantity();
   const nameInput = document.getElementById('order-customer-name');
   const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Customer';
 
@@ -602,7 +641,7 @@ function sendWhatsAppOrder() {
 
   const encodedMsg = encodeURIComponent(message);
   // Official Semestra Enterprise contact number from JAMall
-  window.open(`https://wa.me/601128282939?text=${encodedMsg}`, '_blank');
+  window.open(`https://wa.me/601128282939?text=${encodedMsg}`, '_blank', 'noopener,noreferrer');
 }
 
 function sendEmailOrder() {
@@ -612,8 +651,7 @@ function sendEmailOrder() {
   }
 
   const product = products.find(p => p.id === selectedProductId) || products[0];
-  const qtyInput = document.getElementById('order-qty');
-  const qty = qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
+  const qty = getOrderQuantity();
   const nameInput = document.getElementById('order-customer-name');
   const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Customer';
 
@@ -632,11 +670,19 @@ function setupFAQ() {
   faqItems.forEach(item => {
     const questionBtn = item.querySelector('.faq-question');
     if (questionBtn) {
+      questionBtn.setAttribute('aria-expanded', String(item.classList.contains('active')));
       questionBtn.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        faqItems.forEach(i => i.classList.remove('active'));
+        faqItems.forEach(i => {
+          i.classList.remove('active');
+          const q = i.querySelector('.faq-question');
+          if (q) q.setAttribute('aria-expanded', 'false');
+        });
         if (!isActive) {
           item.classList.add('active');
+          questionBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          questionBtn.setAttribute('aria-expanded', 'false');
         }
       });
     }
@@ -972,12 +1018,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      navLinks.classList.toggle('show');
+      const isOpen = navLinks.classList.toggle('show');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
     document.addEventListener('click', (e) => {
       if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
         navLinks.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modalEl = document.getElementById('order-modal');
+        if (modalEl && modalEl.classList.contains('open')) closeOrderModal();
       }
     });
 

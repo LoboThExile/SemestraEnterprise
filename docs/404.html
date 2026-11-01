@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Semestra Enterprise</title>
+  <meta name="description" content="That page could not be found. Return to Semestra Enterprise, browse products, or get in touch." />
+  <meta name="theme-color" content="#FAF6EE" />
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/icons/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      let saved = 'system';
+      try { saved = localStorage.getItem('semestra_theme_preference') || 'system'; } catch (e) { saved = 'system'; }
+      const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const resolved = saved === 'system' ? (isDark ? 'dark' : 'light') : saved;
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.setAttribute('data-theme-setting', saved);
+    })();
+  </script>
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <a href="index.html" class="brand-link">
+        <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" decoding="async" />
+        <div class="brand-title">
+          <span class="main-name">SEMESTRA</span>
+          <span class="tagline-small">ENTERPRISE</span>
+        </div>
+      </a>
+      <div class="nav-right-group">
+        <div class="nav-links" id="primary-nav">
+          <a href="index.html">Home</a>
+          <a href="products.html">All Products</a>
+          <a href="about.html">About Us</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="section-padding">
+    <div class="container" style="text-align: center; max-width: 640px;">
+      <p class="section-eyebrow">404 &middot; Page not found</p>
+      <h1 style="margin-bottom: 1rem;">That page seems to have wandered off.</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+        The link may be outdated, or the page may have moved. You can head back to the
+        Semestra Enterprise homepage, browse the collection, or contact the team.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="index.html" class="btn btn-primary btn-lg">Back to Home</a>
+        <a href="products.html" class="btn btn-outline btn-lg">Browse Products</a>
+        <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Semestra Enterprise. All rights reserved.</p>
+        <p style="color: #FBBF24; font-weight: 600; margin: 0;">JA Malaysia &bull; Young Enterprise Program 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

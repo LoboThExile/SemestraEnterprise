@@ -2233,3 +2233,10 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   z-index: 5;
 }
+/* Visible keyboard focus: keeps tab navigation usable without changing the
+   mouse hover look. */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lobothexile.github.io/SemestraEnterprise/sitemap.xml

@@ -25,7 +25,8 @@
   <link rel="stylesheet" href="style.css" />
   <script>
     (function () {
-      const saved = localStorage.getItem('semestra_theme_preference') || 'system';
+      let saved = 'system';
+      try { saved = localStorage.getItem('semestra_theme_preference') || 'system'; } catch (e) { saved = 'system'; }
       const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       const resolved = saved === 'system' ? (isDark ? 'dark' : 'light') : saved;
       document.documentElement.setAttribute('data-theme', resolved);
@@ -39,7 +40,7 @@
   <nav>
     <div class="container">
       <a href="index.html" class="brand-link">
-        <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" />
+        <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" decoding="async" />
         <div class="brand-title">
           <span class="main-name">SEMESTRA</span>
           <span class="tagline-small">ENTERPRISE</span>
@@ -49,7 +50,7 @@
       <div class="nav-right-group">
         <!-- Theme Switcher (3 Modes: System, Light, Dark) -->
         <div class="theme-switch-wrap">
-          <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode">
+          <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode" aria-expanded="false" aria-haspopup="true" aria-controls="theme-menu-dropdown">
             <span id="theme-active-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -95,7 +96,7 @@
           </div>
         </div>
 
-        <button class="menu-toggle" aria-label="Toggle navigation menu">
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -104,7 +105,7 @@
           </svg>
         </button>
 
-        <div class="nav-links">
+        <div class="nav-links" id="primary-nav">
           <a href="index.html">Home</a>
           <a href="products.html">All Products</a>
           <a href="about.html">About Us</a>
@@ -301,7 +302,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" />
+          <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" loading="lazy" decoding="async" />
           <p>
             Semestra Enterprise is a student-led company from <strong>SMK Pantai Sepang Putra</strong> under the JA
             Malaysia Young Enterprise Program 2026, celebrating Malaysian heritage and handcrafted creations.

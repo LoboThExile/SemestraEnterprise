@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="style.css" />
     <script>
       (function() {
-        const saved = localStorage.getItem('semestra_theme_preference') || 'system';
+        let saved = 'system';
+      try { saved = localStorage.getItem('semestra_theme_preference') || 'system'; } catch (e) { saved = 'system'; }
         const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const resolved = saved === 'system' ? (isDark ? 'dark' : 'light') : saved;
         document.documentElement.setAttribute('data-theme', resolved);
@@ -34,7 +35,7 @@
     <nav>
       <div class="container">
         <a href="index.html" class="brand-link">
-          <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" />
+          <img src="assets/image/logo.png" alt="Semestra Enterprise Logo" class="logo" decoding="async" />
           <div class="brand-title">
             <span class="main-name">SEMESTRA</span>
             <span class="tagline-small">ENTERPRISE</span>
@@ -44,7 +45,7 @@
         <div class="nav-right-group">
           <!-- Theme Switcher (3 Modes: System, Light, Dark) -->
           <div class="theme-switch-wrap">
-            <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode">
+            <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Select theme mode" aria-expanded="false" aria-haspopup="true" aria-controls="theme-menu-dropdown">
               <span id="theme-active-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
               </span>
@@ -66,7 +67,7 @@
             </div>
           </div>
 
-          <button class="menu-toggle" aria-label="Toggle navigation menu">
+          <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -74,7 +75,7 @@
             </svg>
           </button>
 
-          <div class="nav-links">
+          <div class="nav-links" id="primary-nav">
             <a href="index.html">Home</a>
             <a href="products.html" class="active">All Products</a>
             <a href="about.html">About Us</a>
@@ -103,7 +104,7 @@
         <!-- Visual Column -->
         <div class="product-showcase-box">
           <div class="showcase-img-box">
-            <img id="product-photo-large" src="assets/image/malaysian-heritage-match.png" alt="Product Photo" />
+            <img id="product-photo-large" src="assets/image/malaysian-heritage-match.png" alt="Product Photo" fetchpriority="high" decoding="async" />
           </div>
 
           <!-- Key Specs Grid -->
@@ -155,7 +156,7 @@
           <p>Explore the official state cards including traditional attire, state flags, and regional heritage.</p>
         </div>
         <div class="deck-showcase-card">
-          <img src="assets/image/Banner.jpeg" alt="Malaysian Heritage Match Flagship Creations & Card Deck" class="deck-showcase-img" />
+          <img src="assets/image/Banner.jpeg" alt="Malaysian Heritage Match Flagship Creations & Card Deck" class="deck-showcase-img" loading="lazy" decoding="async" />
           <div class="deck-showcase-caption">
             <div>🏛️ <strong>States Included:</strong> Johor, Kedah, Penang & more</div>
             <div>👘 <strong>Cultural Elements:</strong> Royal Attire & Traditional Costumes</div>
@@ -166,7 +167,7 @@
     </main>
 
     <!-- Order Modal -->
-    <div id="order-modal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div id="order-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-product-name">
       <div class="modal-content">
         <button class="modal-close-btn" onclick="closeOrderModal()" aria-label="Close modal">✕</button>
         <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-heading-gold); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.5rem;">Direct Order Inquiry</span>
@@ -210,7 +211,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" />
+            <img src="assets/image/logo.png" alt="Semestra Enterprise" class="footer-logo" loading="lazy" decoding="async" />
             <p>
               Semestra Enterprise is a student-led company from <strong>SMK Pantai Sepang Putra</strong> under the JA Malaysia Young Enterprise Program 2026, celebrating Malaysian heritage and handcrafted creations.
             </p>
